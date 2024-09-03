@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>논리형 데이터</title>
+    </head>
+    <body>
+        <script>
+            var a = 10==5; //false;
+            var b = 20==20; //true;
+            var c = 10 > 5; //true;
+            var d = 5>=0;   //true;
+            var e = "10"; //문자형 데이터
+            var f = 10;   //숫자형 데이터
+            // 내용만 같으면 true, 타입은 고려하지 않음.
+            var g = e==f;
+            //내용이 같고, 타입까지 일치하면 true, 내용이 같고 타입이 다르면 false
+            var h = e===f; 
+            document.write("20==20 결과값 : "+b+"<br/>");
+            document.write(" '10' == 10 결과값 : "+g+"<br/>");
+            document.write(" '10' === 10 결과값 : "+h+"<br/>");
+
+
+            // boolean형
+            /*
+            var a = true;
+            var b = false;
+            var c = 10>5; //true
+            var d = 50>100; //false
+            document.write(a+"<br/>");
+            document.write(b+"<br/>");
+            document.write(c+"<br/>");
+            document.write(d+"<br/>");
+            */
+        </script>
+
+
+    </body>
+</html>
