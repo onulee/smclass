@@ -10,14 +10,15 @@
     h3{font-size:24px; color:#4f5964; font-weight: 600;
        margin-bottom:15px; margin-top:50px;}
     table{width:960px; border-top:3px solid #283a55;
-      
       border-collapse: collapse;
     }
     th{background:#f2f4f6;}
-    th,td{border:1px solid #b6c4c7; 
+    th,td{border-right:1px solid #b6c4c7; 
+      border-bottom:1px solid #b6c4c7;
       border-collapse: collapse;
       height:40px; text-align: center; font-size:13px;
     }
+    .tableLineNone{border-right:none;}
   </style>
 </head>
 <body>
@@ -37,16 +38,16 @@
         <th>9H</th>
         <th>9H+2Round</th>
         <th>그린피할인안내</th>
-        <th>비고</th>
+        <th class="tableLineNone">비고</th>
       </tr>
       <tr>
         <td rowspan="2">그린피</td>
         <td>주중</td>
         <td>55,000원</td>
         <td>110,000원</td>
-        <td rowspan="3">리조트회원 : 30%<br/>
+        <td rowspan="3" >리조트회원 : 30%<br/>
           회원동반, 지역주민, 투숙객 20%</td>
-          <td rowspan="3">셀프라운드<br/>
+        <td rowspan="3" class="tableLineNone">셀프라운드<br/>
             (노캐디)</td>
           </tr>
           <tr>
@@ -67,11 +68,11 @@
           <tr>
             <th>구분</th>
             <th>9H</th>
-            <th>18H</th>
+            <th class="tableLineNone">18H</th>
           </tr>
           <tr>
             <td>갤러리</td>
-            <td colspan="2">일반 그린피<br/>
+            <td colspan="2" class="tableLineNone">일반 그린피<br/>
               (4인 경기시 갤러리 입장 불가)</td>
           </tr>
         </table>

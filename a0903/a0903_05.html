@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판만들기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+    *{margin:0; padding:0;
+      font-family: "Nanum Gothic", sans-serif;
+      font-weight: 400;
+      font-style: normal; 
+    }
+    div{width:1000px; margin:0 auto;}
+    h3{font-size:40px; font-weight: 600; color:#333;
+    margin-bottom:25px; margin-top:40px; }
+    table{ width:1000px; color:#333; font-size:14px;
+      border-top:2px solid #424242; border-bottom:2px solid #424242;
+      border-collapse: collapse;
+    }
+    th{height:48px; font-size:15px; font-weight: 900; background:#f2f4f6; }
+    td{height:45px; text-align:center; }
+    th,td{border-bottom:1px solid #e3e3e3; border-collapse: collapse;}
+  </style>
+</head>
+<body>
+  <script>
+    function boardBtn(){
+      alert("게시글을 가져옵니다.");
+      var data = '';
+
+      // 반복문 - for문
+      // for(초기값; 조건문; 증감식){
+      //     var i=0;i<10; i++ : 1씩증가
+      // i=0,i=1,i=2,i=3,i=4,5,6,7,8,i=9
+      //}
+
+      for(var i=0;i<10;i++){
+        data += '<tr>';
+        data += '<td>'+ (i+1) +'</td>';
+        data += '<td>익스프레스 체크아웃 서비스 오픈'+(i+1)+'</td>';
+        data += '<td>포레스트</td>';
+        data += '<td>2024-07-11</td>';
+      }
+      document.getElementById("tbody").innerHTML = data;
+      console.log(data);
+
+    }
+  </script>
+  
+  <div>
+    <select id="year">
+      <option>1901</option>
+      <option>1902</option>
+      <option>1903</option>
+      <option>1904</option>
+      <option>1905</option>
+      <option>1906</option>
+      <option>1907</option>
+      <option>1908</option>
+      <option>1909</option>
+      <option>1910</option>
+    </select>년
+    <br/>
+    <script>
+      var ydata = '';
+      for(var i=1901;i<=2024;i++){
+        ydata = ydata + '<option>'+i+'</option>';
+        //ydata += '<option>1901</option>';
+      }
+      console.log(ydata);
+      document.getElementById("year").innerHTML = ydata;
+    </script>
+    <h3>뉴스</h3>
+    <button onclick="boardBtn()">게시판가져오기</button>
+    <table>
+      <colgroup>
+        <col width="10%">
+        <col width="*">
+        <col width="20%">
+        <col width="10%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>리조트</th>
+          <th>등록일자</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+          <td colspan="4">데이터가 없어요. 채워주세요.</td>
+        </tr>
+      </tbody>
+      </table>
+      
+    </div>
+  
+</body>
+</html>
