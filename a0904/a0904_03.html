@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+  <style>
+    #id{width:200px;}
+  </style>
+</head>
+<body>
+  <form action="http://www.daum.net" name="frm" method="get">
+    <label>아이디</label>
+    <input type="text" name="id" id="id" value="aabbcc" readonly ><br>
+    <label>패스워드</label>
+    <input type="password" name="pw" ><br/>
+    <label>전화번호</label>
+    <input type="text" name="phone" readonly ><br/>
+    <label>성별</label><br/>
+    <input type="radio" name="gender" id="male" value="male">
+    <label for="male">남자</label>
+    <input type="radio" name="gender" id="female" value="female" checked>
+    <label for="female" >여자</label>
+    <br/>
+    <label>학년</label><br/>
+    <input type="radio" name="grade" id="one" value="one">
+    <label for="one">1학년</label>
+    <input type="radio" name="grade" id="two" value="two" checked>
+    <label for="two">2학년</label>
+    <input type="radio" name="grade" id="three" value="three">
+    <label for="three">3학년</label>
+    <br/>
+    <label>반</label><br/>
+    <input type="number" name="stuClass" >반<br/>
+    <label>취미</label><br/>
+    <input type="checkbox" name="hobby" id="game" value="game" checked>
+    <label for="game">게임</label>
+    <input type="checkbox" name="hobby" id="golf" value="golf">
+    <label for="golf">골프</label>
+    <input type="checkbox" name="hobby" id="swim" value="swim" checked>
+    <label for="swim">수영</label>
+    <input type="checkbox" name="hobby" id="run" value="run">
+    <label for="run">조깅</label>
+    <input type="checkbox" name="hobby" id="book" value="book">
+    <label for="book">독서</label>
+    <br/>
+    <textarea name="content" cols="200" rows="80"></textarea>
+    <br/>
+
+    <input type="submit" value="로그인">
+    <br/>
+    <script>
+      //함수선언
+      function frmBtn(){
+        alert("함수를 호출합니다.");
+        var id = document.getElementById("id").value;
+        //alert("input박스에 입력된 id값 : "+id);
+        if(id==""){
+          alert("아이디 또는 전화번호를 입력해 주세요.");
+        }
+      }
+    </script>
+    <button type="button" onclick="frmBtn()">로그인</button>
+
+  </form>
+  
+</body>
+</html>

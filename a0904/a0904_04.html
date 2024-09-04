@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>네이버 : 로그인</title>
+  <style>
+    #main{width:480px; height: 500px; border:1px solid #e1e3e5;
+    border-radius: 12px; margin:50px auto; }
+    h1{text-align: center; color:#09aa5c; font-size: 60px; font-weight: 900;}
+    form{width:410px; margin:0 auto;}
+    input{width:410px; height:40px;margin-bottom:10px; font-size:20px; }
+    #err{color:red; font-weight: 700;}
+    button{width:410px; height: 60px; margin-top:30px; background:#09aa5c;
+    border:none; color:white; font-size:20px;}
+  </style>
+</head>
+<body>
+  <div id="main">
+    <header>
+      <h1>NAVER</h1>
+    </header>
+    <section>
+      <form action="http://www.daum.net" method="get" name="loginFrm">
+        <input type="hidden" name="ip" value="127.0.0.1"><br/>
+        <input type="text" name="id" id="id" placeholder="아이디 또는 전화번호" ><br/>
+        <input type="password" name="pw" id="pw" placeholder="비밀번호" autofocus><br/>
+        <div id="err"></div>
+        <button type="button" onclick="loginBtn()">로그인</button>
+      </form>
+    </section>
+  </div>
+  <script>
+    //함수선언
+    function loginBtn(){
+      //alert("함수를 호출합니다.");
+      var id = document.getElementById("id").value;
+      if(id==""){
+        //alert("아이디를 입력하세요.");
+        var txt = "아이디 또는 전화번호를 입력해 주세요.";
+        document.getElementById("err").innerText = txt;
+        document.getElementById("id").focus();
+      }
+      //alert(id);
+      var pw = document.getElementById("pw").value;
+      //alert(pw);
+
+      //action주소로 이동하는 명령어
+      loginFrm.submit();
+
+    }
+  </script>
+  
+</body>
+</html>

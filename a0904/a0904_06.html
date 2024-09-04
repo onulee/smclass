@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #txt{width:600px; height:100px; border:1px solid black;
+    text-align: center; font-size:30px; line-height: 60px; }
+  </style>
+</head>
+<body>
+  <label>이메일</label><br/>
+  <form action="" name="frm" method="get">
+    <input type="text" name="email1" id="email1" onkeyup="ekey()">@
+    <input type="text" name="email2" id="email2">
+    <select name="email3" id="email3" onchange="echg()">
+      <option value="">직접입력</option>
+      <option value="naver.com">naver.com</option>
+      <option value="gmail.com">gmail.com</option>
+      <option value="daum.net">daum.net</option>
+    </select>
+    <br/>
+    <button type="button" onclick="ebtn()">버튼</button>
+  </form>
+  <div id="txt"></div>
+  <script>
+    // 함수선언
+    function ekey(){
+      //console.log("글이 출력됩니다.");
+      var emailTxt = document.getElementById("email1").value;
+      //console.log(emailTxt);
+      document.getElementById("txt").innerText = emailTxt;
+
+    }
+
+
+
+    // 함수선언
+    function echg(){
+      //alert("echg 함수를 호출합니다.");
+      var email = document.getElementById("email3").value;
+      
+      if(email == ""){
+        document.getElementById("email2").readOnly = false;
+        document.getElementById("email2").value = "";
+        document.getElementById("email2").focus();
+      }else{
+        document.getElementById("email2").value = email;
+        document.getElementById("email2").readOnly = true;
+      }
+      
+
+
+      //alert(email);
+    }
+
+    // 함수선언
+    function ebtn(){
+      alert("함수를 호출합니다.");
+    }
+
+  </script>
+</body>
+</html>

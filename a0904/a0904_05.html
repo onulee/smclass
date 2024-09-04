@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+</head>
+<body>
+  <form action="" method="get" name="frm">
+    <label>아이디</label>
+    <input type="text" name="id" id="id"><br/>
+    <label>검색</label> 
+    <input type="search" name="search"><br/>
+    <label>이메일</label>
+    <input type="email" name="email" required><br/>
+    <label>달력</label>
+    <input type="date" name="date"><br/>
+    <label>시간</label>
+    <input type="time" name="time"><br/>
+    <label>파일첨부</label>
+    <input type="file" name="files"><br/>
+    <label>과선택</label><br/>
+    <select name="major">
+      <option value="archi">건축공학과</option>
+      <option value="mechanic">기계공학과</option>
+      <option value="computer" selected>컴퓨터공학과</option>
+      <option value="elec">전자공학과</option>
+    </select>
+
+    <input type="submit" value="전송">
+    <input type="reset" value="지우기">
+  </form>
+  
+</body>
+</html>
