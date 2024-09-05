@@ -1,0 +1,22 @@
+* { margin:0; padding:0; letter-spacing: -0.1;  }
+#container{width:1310px; height:1220px; background: #f6f6f6; 
+  margin:100px auto; padding:40px 0;
+}
+.info{width:1200px; height:1140px; 
+  margin:0 auto; 
+  display:flex;
+  justify-content: space-between;    /* center, space-between */
+}
+.none-mark{width:532px; height:1138px; margin-right:50px;
+}
+.marginT20{width:680px; height:1138px; 
+}
+dl{margin-bottom:30px; }
+dl strong{font-size:18px; margin-bottom:5px; display: inline-block; }
+dt{color:#333; font-size:20px; font-weight: 600;  
+   margin-bottom:10px; }
+dd{color:#666; font-size:18px;
+   margin-bottom:5px; }
+.use01{ color: rgb(184,49,47); margin-left:25px; margin-bottom:15px; }
+.use01 span{color:#666;}
+.use02{  margin-left:40px; }

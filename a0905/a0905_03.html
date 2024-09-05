@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h3{width:300px; height:100px; border:1px solid black;
+       white-space: nowrap;     /* 줄단락을 없앰 */
+       overflow:hidden;         /* 테두리를 벗어난것을 숨김 */
+       text-overflow: ellipsis; /* 말줄임표 */
+    }
+
+    /* hover: 마우스 위에 올림 */
+    h3:hover{
+      white-space: normal;
+      overflow:visible;
+    }
+
+    div{
+      width:300px; height:100px; border:1px solid black;
+      /* 
+      white-space: nowrap;
+      */
+      overflow: scroll;
+    }
+    h2{width:800px; height:200px; 
+       border:1px solid black; 
+       word-spacing: 40px; /* 단어간격 */
+       letter-spacing: 30px; /* 글자간격 - 자간 */
+       text-shadow: 35px 35px 35px #f00; /* 폰트그림자 */
+       text-decoration: line-through;  /* line-through, overline, underline, none */
+       font-size:50px; 
+       /* 글자 색상 */
+       /* color:rgb(0,0,0,0.8);   투명도 설정 가능 */
+       /* color:black;  문자색상적용   */
+       color:#000000; /* 16진수 코드 적용 #000; */
+       text-align: center; /* 글자 가운데 정렬 */
+       margin:0 auto; /* 사각모델 가운데 정렬 */
+       line-height: 190px; /* 세로 가운데 정렬 */
+       /* 세로 가운데 정렬 */
+       /* padding-top:60px; box-sizing: border-box; */
+
+    }
+    p{width:400px; height:500px; border:1px solid black;
+      font-size:17px; font-weight:700;
+      line-height:60px; /* 줄간격 */
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <h3>
+    잠비아는 아프리카 중남부에 위치한 대표적인 천연자원 보유국이다.
+  </h3>
+  <div>
+    잠비아는 아프리카 중남부에 위치한 대표적인 천연자원 보유국이다. 구리 매장량이 1900만t으로 세계 9위이며, 연간 80만t을 생산한다. 코발트 매장량도 세계 4위 수준인 54만t이나 된다. 미국 광산개발 유니콘 코볼드 메탈스(KoBold Metals)는 2월 잠비아에서 대규모 구리 매장지를 찾았다. 코볼드 메탈스는 인공지능(AI)을 기반으로 구리, 니켈, 리튬, 코발트 등 광물을 탐사하는 기술을 보유해 지표면에서 최대 2000m 아래에 묻혀 있는 광물까지 탐지할 수 있다. 미국의 대표 빅테크 마이크로소프트(MS)의 빌 게이츠 창업자와 아마존의 제프 베이조스 창업자가 이 회사에 상당한 금액을 투자해왔다. 조시 골드먼 코볼드 메탈스 최고경영자(CEO)는 “잠비아 구리 매장지가 생산을 시작하면 최고 등급의 대형 지하 광산 중 하나가 될 것”이라며 “규모와 품질 면에서 콩고민주공화국(DR 콩고)의 카모아카쿨라 구리 광산과 매우 유사한 수준”이라고 밝혔다.
+  </div>
+  <h2>글꼴 관련 스타일</h2>
+  <p>
+    잠비아는 아프리카 중남부에 위치한 대표적인 천연자원 보유국이다. 구리 매장량이 1900만t으로 세계 9위이며, 연간 80만t을 생산한다. 코발트 매장량도 세계 4위 수준인 54만t이나 된다. 미국 광산개발 유니콘 코볼드 메탈스(KoBold Metals)는 2월 잠비아에서 대규모 구리 매장지를 찾았다. 코볼드 메탈스는 인공지능(AI)을 기반으로 구리, 니켈, 리튬, 코발트 등 광물을 탐사하는 기술을 보유해 지표면에서 최대 2000m 아래에 묻혀 있는 광물까지 탐지할 수 있다. 미국의 대표 빅테크 마이크로소프트(MS)의 빌 게이츠 창업자와 아마존의 제프 베이조스 창업자가 이 회사에 상당한 금액을 투자해왔다. 조시 골드먼 코볼드 메탈스 최고경영자(CEO)는 “잠비아 구리 매장지가 생산을 시작하면 최고 등급의 대형 지하 광산 중 하나가 될 것”이라며 “규모와 품질 면에서 콩고민주공화국(DR 콩고)의 카모아카쿨라 구리 광산과 매우 유사한 수준”이라고 밝혔다.
+  </p>
+  
+</body>
+</html>
