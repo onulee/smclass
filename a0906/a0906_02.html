@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin:0; padding:0; }
+    /* 블록요소 - 하단으로 정렬됨. width,height 지정됨. h,p,div 이외 다수 */
+    div{ background: pink; float:left; box-sizing: border-box;
+      display: block;
+      width:300px; height:100px; border:2px solid black; }
+    /*인라인요소 - 왼쪽으로 정렬됨. width,height지정안됨 span,strong,img,a */
+    span{
+      display: inline-block; /* display - 요소변경 : block, inline, inline-block */
+      width:200px; height:100px; 
+      background: yellow; border:2px solid black;}
+    #container{ background: white;
+      width:908px; border:4px solid black;
+    }  
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+  <!--
+    <span>1111</span>
+    <span>2222</span>
+    <span>3333</span>
+    -->
+  
+</body>
+</html>
