@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* div{width:240px; height:240px; border:1px solid black;
+    overflow: hidden; border-radius: 20px;} */
+    /* div img{width:240px; height:240px; object-fit: cover; 
+      border-radius: 20px; } */
+    * {margin:0; padding:0;}
+    #right_fixed {width:118px; border:1px solid #111;
+     position: fixed; right:0; top:169px;
+    }
+    #right_fixed .chatting {width:118px; height:118px; border-bottom:1px solid #111;
+    box-sizing: border-box; padding-top: 30px;
+    }
+    #right_fixed .chatting div:nth-child(1){width:38px; height:40px; margin:0 auto;
+    background: url(images/ic_speechbubble.svg) no-repeat; background-size: cover;  }
+    #right_fixed .chatting div:nth-child(2){width:100%; text-align: center;
+    font-size: 13px; color:#111; letter-spacing: -0.26px;}
+    
+    #right_fixed .ai_chatting {width:118px; height:118px; border-bottom:1px solid #111;
+      box-sizing: border-box; padding-top: 30px; }
+    #right_fixed .ai_chatting div:nth-child(1){width:38px; height:40px; margin:0 auto;
+      background: url(images/ico_chatai_big.svg) no-repeat; background-size: cover; 
+      }
+    #right_fixed .ai_chatting div:nth-child(2){width:100%; text-align: center;
+    font-size: 13px; color:#111; letter-spacing: -0.26px;}
+    #right_fixed .items{ font-size: 13px; text-align: center; letter-spacing: -1px;
+      color:#333; background: #f3f3f3;
+      width:118px; height:45px; 
+    }
+    #right_fixed .items span{ display: inline-block; box-sizing: border-box;
+      margin-top: 19px; margin-left:7px;
+      width:12px; height:8px;
+      background: url(images/spr_com.png) no-repeat;
+      background-position: -80px -68px;
+    }
+    #right_fixed .top{height:30px; text-align: center;
+      font-size: 13px; color:#333; letter-spacing: -1px; background: #f3f3f3;
+      border-top:1px solid #ddd; line-height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="right_fixed">
+    <div class="chatting">
+      <div></div>
+      <div>채팅상담</div>
+    </div>
+    <div class="ai_chatting">
+      <div></div>
+      <div>AI 채팅상담</div>
+    </div>
+    <div class="items" >최근 본 상품(0) <span></span></div>
+    <div class="top">▲ TOP</div>
+  </div>
+  <!-- <div>
+    <img src="images/h01.jpg">
+  </div>
+  <img src="images/h01.jpg"> -->
+  
+</body>
+</html>

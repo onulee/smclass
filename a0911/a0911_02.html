@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin:0; padding:0;}
+    header{width:900px; height:300px; margin:30px auto;
+    border:2px solid black;
+    display: flex;
+    flex-direction: row; /*row, column*/
+    flex-wrap: no-wrap;
+    /* 가로 정렬 방식 */
+    /* flex-start:왼쪽정렬, flex-end:오른쪽 정렬, center:가운데 정렬, space-between:좌우정렬
+       flex-around : 간격 동일 배치  */
+    justify-content: flex-start; 
+    /* 세로 정렬 방식 */   
+    /*center:중앙정렬, flex-start:상단정렬, flex-end:하단정렬 */
+    align-items: flex-end;
+  }
+    div{width:100px; height:100px; background: yellow;
+      border:5px solid black; box-sizing: border-box;
+    
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    
+  </header>
+  
+</body>
+</html>

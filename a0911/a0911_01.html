@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+  <style>
+    input[type="radio"]{display: none; }
+    input[type="radio"]+label{ width:24px; height:24px;
+      padding-left:24px; margin-right:10px;
+      background: url(images/radio_off.jpg) no-repeat 0 2px;
+    }
+    input[type="radio"]:checked+label{ 
+      background: url(images/radio_on.jpg) no-repeat 0 2px;
+      color:blue; font-weight:700;
+    }
+    input[type="checkbox"]{display: none; }
+    input[type="checkbox"]+label{ width:24px; height:24px;
+      padding-left:24px; margin-right:10px;
+      background: url(images/radio_off.jpg) no-repeat 0 2px;
+    }
+    input[type="checkbox"]:checked+label{ 
+      background: url(images/radio_on.jpg) no-repeat 0 2px;
+      color:blue; font-weight:700;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    *{margin:0; padding:0;  
+    font-family: "Noto Sans KR", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal;
+    }
+    a{text-decoration: none; color:inherit;}
+    ul,ol{ list-style: none; }
+    .top_menu{width:100%; height:35px; background: #202020;
+      color:white; font-weight: 600;
+      padding-top:5px; box-sizing: border-box;
+    
+    }
+    .top_menu ul{display: flex; justify-content: center;}
+    .top_menu li{width:130px; 
+      text-align: center;
+    }
+    .top_menu li:after{
+      content: "|";
+      padding-left:20px;
+    }
+    header{margin-bottom:100px;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top_menu">
+      <ul>
+        <li id="top_menu_1"><a href="#">회원가입</a></li>
+        <li id="top_menu_2"><a href="#">로그인</a></li>
+        <li id="top_menu_3"><a href="#">고객행복센터</a></li>
+        <li id="top_menu_4"><a href="#">배송정보검색</a></li>
+        <li id="top_menu_5"><a href="#">기프트카드 등록</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+
+  <form action="#" name="frm" medthod="get">
+    <label>성별</label><br>
+    <input type="radio" name="gender" id="male" value="male">
+    <label for="male">남자</label>
+    <input type="radio" name="gender" id="female" value="female">
+    <label for="female">여자</label>
+    <br>
+    <label>취미</label><br>
+    <input type="checkbox" name="hobby" id="game" value="game">
+    <label for="game">게임</label>
+    <input type="checkbox" name="hobby" id="golf" value="golf">
+    <label for="golf">골프</label>
+    <input type="checkbox" name="hobby" id="swim" value="swim">
+    <label for="swim">수영</label>
+    <input type="checkbox" name="hobby" id="run" value="run">
+    <label for="run">조깅</label>
+    <input type="checkbox" name="hobby" id="book" value="book">
+    <label for="book">독서</label>
+    <br>
+
+  </form> 
+  
+</body>
+</html>
