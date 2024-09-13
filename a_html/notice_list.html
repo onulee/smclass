@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/board.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <title>포레스트 리솜</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="/"><img src="images/img_logo_re_forest.png"></a>
+      </div>
+      <div class="nav_wrap">
+        <div class="quick_menu">
+          <ul>
+            <li><a href="#">회원예약</a></li>
+            <li><a href="#">패키지 예약</a></li>
+            <li><a href="#">부대시설 예약</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">로그인</a></li>
+          </ul>
+        </div>
+        <script>
+          function m_over(){
+            document.querySelector(".navibg").style.display='block';
+          }
+
+          function m_leave(){
+            document.querySelector(".navibg").style.display='none';
+          }
+       </script>
+        <div class="menu" onmouseover="m_over()" onmouseleave="m_leave()" >
+          <ul>
+            <li><a href="#">포레스트</a></li>
+            <li><a href="#">스파&찜질방</a></li>
+            <li><a href="#">객실</a></li>
+            <li><a href="#">특별한 경험</a></li>
+            <li><a href="#">세미나 & 연회</a></li>
+            <li><a href="#">브랜드소개</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- * 하부메뉴부분 들어감 -->
+  <div class="navibg"></div>
+  <!-- 서브페이지 배너 부분 -->
+  <div class="sub_banner"></div> 
+
+  <!--section 부분 : 게시판 -->
+  <section>
+    <div class="sub_naviloc">HOME <i class="fa-solid fa-chevron-right"></i> 포레스트 <i class="fa-solid fa-chevron-right"></i> NOTICE</div>
+    <h1>NOTICE</h1>
+    <div class="wrapper">
+      <form action="#" name="sFrm" method="get">
+        <select name="category">
+          <option value="all">전체</option>
+          <option value="btitle">제목</option>
+          <option value="bcontent">내용</option>
+          <option value="name">작성자</option>
+        </select>
+        <input type="text" name="search_txt" id="search_txt">
+        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+
+    </div>
+    <table>
+      <colgroup>
+        <col width="10%">
+        <col width="*">
+        <col width="15%">
+        <col width="15%">
+        <col width="12%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    <script>
+      var data = "";
+      for(var i=1;i<=10;i++){
+        data += "<tr>";
+        data += "<td>"+i+"</td>";
+        data += "<td><a href='#'>예방관련 안내</a></td>";
+        data += "<td>관리자</td>";
+        data += "<td>2024-09-10</td>";
+        data += "<td>100</td>";
+        data += "</tr>";
+
+      }
+      document.getElementById("tbody").innerHTML = data;
+    </script>
+    </table>
+    <ul class="page-num">
+      <li class="first"></li>
+      <li class="prev"></li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li class="next"></li>
+      <li class="last"></li>
+    </ul>
+    <div class="write"><a href="#">쓰기</a></div>
+    
+  </section>
+
+  <div id="right_fixed">
+    <div class="chatting">
+      <div></div>
+      <div>채팅상담</div>
+    </div>
+    <div class="ai_chatting">
+      <div></div>
+      <div>AI 채팅상담</div>
+    </div>
+    <div class="items" >최근 본 상품(0) <span></span></div>
+    <div class="top">▲ TOP</div>
+  </div>
+
+
+  
+</body>
+</html>

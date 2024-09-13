@@ -66,6 +66,8 @@ background-size: 800px 800px;
 background:url('../images/ico_set.png') -628px -320px no-repeat;
 background-size: 800px 800px;
 }
+
+/* 배너부분 */
 section #banner{ width:100%; height:640px; background: url('../images/main_top.jpg') no-repeat;
 background-size: cover; box-sizing: border-box; padding:70px 0 0 370px;
 }
