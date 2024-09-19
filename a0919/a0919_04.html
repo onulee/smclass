@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,th,td{border:1px solid black; border-collapse: collapse;
+      text-align: center;
+    }
+    table{width:800px; margin:50px auto; border-top:2px solid black;  }
+    th{background: #efefef; }
+    th,td{width:200px; height: 40px;}
+  </style>
+  <script>
+    // function btn(){
+    //   var num = document.getElementById("num").value;
+    //   var num2 = document.getElementById("num2").value;
+    //   document.getElementById("num3").value = Number(num)+Number(num2);
+    // }
+  </script>
+   
+</head>
+<body>
+  <table>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성일</th>
+      <th>조회수</th>
+    </tr>
+    <tbody id="tbody">
+      <!-- 아무것도 없음. -->
+    </tbody>
+  </table>
+  <script>
+
+    function dataBtn(){
+      alert("데이터 불러오기 버튼 클릭");
+      var data = ""; // 변수선언
+      data = data + "<tr>";
+      data = data + "<td>1</td>";
+      data = data + "<td>12월 연말 이벤트 안내</td>";
+      data = data + "<td>2024-12-24</td>";
+      data = data + "<td>1204</td>";
+      data = data + "</tr>";
+
+      data = data + "<tr><td>1</td><td>12월 연말 이벤트 안내</td><td>2024-12-24</td><td>1204</td></tr>";
+      
+      document.getElementById("tbody").innerHTML = data;
+    }
+
+
+  </script>
+  <button type="button" onclick="dataBtn()">데이터 불러오기</button>
+
+ 
+
+
+
+  <!-- <form action="http://www.daum.net" name="frm" method="get">
+    <label>숫자1</label>
+    <input type="text" name="num" id="num"><br>
+    <label>숫자2</label>
+    <input type="text" name="num2" id="num2"><br>
+    <label>결과값</label>
+    <input type="text" name="num3" id="num3"><br>
+    <input type="submit" value="더하기"><br>
+    <input type="button" onclick="btn()" value="더하기">
+  </form> -->
+  
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function wbtn(event){
+      console.log(event.keyCode);
+      // "13", 13
+      if(event.keyCode === 13){
+        //alert("확인 클릭");
+        var dollar = Number(document.getElementById("dollar").value);
+        document.getElementById("won").value = dollar * 1327;
+      }
+    }
+  </script>
+  <h2>달러 환율</h2>
+  <form action="" name="wfrm" method="get">
+    <label>달러</label>
+    <input type="text" name="dollar" id="dollar" onkeyup="wbtn(event)"> <span>환율기준 1,327원</span>
+    <br>
+    <label>원화</label>
+    <input type="text" name="won" id="won">
+    <br>
+    <button type="button" onclick="wbtn()">확인</button>
+
+  </form>
+
+
+  <hr>
+
+  <h2>당신의 나이는 ?</h2>
+  <h2 id="age">     </h2>
+
+  <form action="#" name="frm" method="get">
+    <label>태어난 년도</label>
+    <input type="text" name="birth_year" id="birth_year">
+    <br>
+    <button type="button" onclick="btn()">확인</button>
+  </form>
+  <script>
+    function btn(){
+      //alert("확인 버튼 클릭");
+      //alert(document.getElementById("birth_year").value);
+      var b_year = document.getElementById("birth_year").value;
+      document.getElementById("age").innerText = 2024 - Number(b_year);
+    }
+
+
+    //document.getElementById("age").innerText = 30;
+
+  </script>
+  
+</body>
+</html>
