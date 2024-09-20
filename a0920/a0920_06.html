@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 월을 입력받아, 1-12
+    // 12,1,2 -> 겨울, 3,4,5->봄 6,7,8->여름 9,10,11->가을이라고 출력하시오.
+    // 
+    var mon = Number(prompt("월을 입력하세요."));
+    var result = "";
+    if(mon >= 3 && mon<=5){
+      result = "봄";
+    }else if(mon>=6 && mon<=8){
+      result = "여름";
+    }else if(mon<=9 && mon <=11){
+      result = "가을";
+    }else if(mon==12 || (mon <= 1 && mon<=2)){
+      result = "겨울";
+    }
+
+
+  </script>
+  
+</body>
+</html>

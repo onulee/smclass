@@ -1,0 +1,57 @@
+*{margin:0; padding:0;
+  font-size: 14px; color:#454545; letter-spacing: -0.09em;
+  box-sizing: border-box;
+}
+ol,ul{list-style: none;}
+a{text-decoration: none; color:inherit;}
+li{ font-size:13px; font-weight: 700;}
+.pop-body{width:650px; height:804px; padding:20px;
+  line-height: 24px;
+  border:1px solid black; margin:0 auto;
+}
+.message-box{width:610px; height:122px; padding:25px;
+background: #f8f8f8; margin-bottom:10px; }
+.form{width:610px; height:230px; padding:25px;
+  margin:0 0 30px; border:1px solid #e8e8e8;
+ }
+.form label {font-size:15px; font-weight: 700; margin-right:12px;}
+.form input{height:27px; outline:none;}
+.form input[type=text]{ text-align: center; margin-right:5px; padding: 0 5px;
+  width:60px; border:1px solid #ddd; vertical-align: middle;
+}
+.form .dash{color:#b7b7b7; margin:0 15px;}
+.form span{font-size: 16px;}
+#weight+span{margin-right:110px;}
+.compute span { font-size:16px; }
+.compute input{color:white; font-weight: 700; width:70px;  border:none; cursor: pointer;}
+.compute input[type=button]{ background: #0aaf6b;}
+.compute input[type=reset]{ background: #656565;}
+dl{width:558px; height:48px; margin:10px 0 18px; }
+dt{float:left; width:20%; font-size: 14px;   }
+.graph ul{ width:558px; height:35px;}
+dd{width:80%; font-weight: 700; color:#eb4f3a;   }
+.graph li label{display: inline-block; width:21%; margin-right:12px; 
+font-size:13px; }
+.graph li .dv1{width:22%; }
+.graph li .dv2{width:22%; }
+.graph .clearfix li{height:35px; 
+  text-align: center; color:white; line-height: 35px;
+  float:left;}
+.low-weight {width:25%; background: #329ae3; }
+.regular {width:25%; background: #95c520; }
+.overweight {width:25%; background: #ee942a; }
+.obsity {width:25%; background: #f15232; }
+
+.pop-header{width:650px; height:54px; margin:0 auto;
+  padding:15px 20px 15px 40px;
+  border-bottom:3px solid #e5e5e5;
+  background: url(../images/bullet-h1.png) 20px 50% no-repeat ;
+  background-color: #0aaf6b;
+}
+.pop-header h1{font-size: 18px; font-weight: 700; color:white;
+  letter-spacing: -0.03em; display: inline-block; width:561px;}
+
+.pop-header a{ display: inline-block; width:25px; height:25px;
+  background: url(../images/btn-close.png) 50% 50% no-repeat ;
+  position: relative; top:-5px;
+}

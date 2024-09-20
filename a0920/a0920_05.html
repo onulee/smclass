@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성적처리</title>
+</head>
+<body>
+  <script>
+    var score = Number(prompt("점수를 입력하세요."));
+    var result ="";
+    if(score>=90){
+      result = "A";
+      if(score>=97){ //97,98,99,100
+        result += "+";
+      }else if(score<=93){ //93,92,91,90
+        result += "-";
+      }
+    }else if(score>=80){
+      result = "B";
+      if(score>=87){ 
+        result += "+";
+      }else if(score<=83){ 
+        result += "-";
+      }
+    }else if(score>=70){
+      result = "C";
+      if(score>=77){ 
+        result += "+";
+      }else if(score<=73){ 
+        result += "-";
+      }
+    }else if(score>=60){
+      result = "D";
+      if(score>=67){ 
+        result += "+";
+      }else if(score<=63){ 
+        result += "-";
+      }
+    }else{
+      result = "F";
+    }
+
+    document.write("성적 : "+result+"<br>");
+
+  </script>
+  
+</body>
+</html>

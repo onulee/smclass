@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼항조건연산자</title>
+</head>
+<body>
+  <script>
+    // 숫자 3개를 입력받아 3개를 출력하시오.
+    var a = Number(prompt("숫자1를 입력하세요."));
+    var b = Number(prompt("숫자2를 입력하세요."));
+    var c = Number(prompt("숫자3를 입력하세요."));
+    // 10,3,15
+    var result = (a>b)? ((a>c)?a:c) : (b>c?b:c);
+    document.write("3개숫자중 가장 큰수 : "+result+"<br>");
+    document.write("입력한 숫자 : "+a+","+b+","+c+"<br>");
+
+    // 숫자 1개를 입력받아 짝수이면, 짝수입니다. 홀수이면, 홀수입니다. 라고 출력을 하시오.
+    // 입력받은 숫자를 (input%2 == 0)
+    // var input = Number(prompt("숫자를 입력하세요."));
+    // var result = (input%2 == 0)?"짝수입니다.":"홀수입니다.";
+    // document.write(result);
+
+
+
+    // //두수를 입력받아, 변수에 저장해서, 두수를 출력하시오.
+    // var a = Number(prompt("숫자를 입력하세요."));
+    // var b = Number(prompt("숫자를 입력하세요."));
+
+    // // a=10, b=3
+    // //삼항식을 사용해서 큰수를 출력하시오.
+    // var result = (a>b)?a:b;
+    // document.write("더 큰수 : "+result+"<br>");
+    // document.write(a+"<br>");
+    // document.write(b+"<br>");
+
+    // var a = 10;
+    // var b = 3;
+    // var result = (a>b)?"정답입니다.":"오답입니다.";
+    // document.write(result);
+
+  </script>
+  
+</body>
+</html>

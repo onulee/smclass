@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for문</title>
+  <style>
+    .red{color:red; font-size:16px; font-weight: 600;}
+    .green{color:green; font-size:16px; font-weight: 600;}
+    .gray{background: gray;}
+    table{width:800px;  margin:0 auto; text-align: center;}
+    th,td{width:200px; height:40px;}
+    th{background: #efefef;}
+    table,th,td{border:1px solid black; border-collapse: collapse;}
+  </style>
+</head>
+<body>
+  <script>
+
+    //1-100까지 홀수이면 red, 짝수이면 green 출력하시오.
+    // for(var i=1;i<=100;i++){
+    //   if(i%2!=0){
+    //     //document.write("<p class='red'>"+i+"</p>");
+    //     document.write(`<p class='red'>${i}</p>`); //  ``빽티 ${변수}
+    //   }else{
+    //     document.write("<p class='green'>"+i+"</p>");
+    //   }
+    // }
+
+
+  </script>
+
+  <table>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성일</th>
+      <th>조회수</th>
+    </tr>
+
+    <script>
+      //20번 반복, 번호는 1씩 증가해서 출력하시오.
+      // 홀수번째는 배경색을 gray 변경.
+
+      for(var i=1;i<=20;i++){
+        if(i%2!=0){ //홀수이면
+          document.write("<tr class='gray'><td>"+i+"</td><td>이벤트 안내</td><td>2024-09-20</td><td>100</td></tr>");
+        }else{
+          document.write("<tr><td>"+i+"</td><td>이벤트 안내</td><td>2024-09-20</td><td>100</td></tr>");
+        }
+      }
+    </script>
+
+    
+  </table>
+  
+
+</body>
+</html>

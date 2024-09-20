@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // // 숫자를 입력받아
+    // // 0보다 크면 양수, 0 -> 0, 0보다 작으면 음수라고 출력하시오.
+    // var num = Number(prompt("숫자를 입력하세요."));
+    // var result = "";
+    // if(num>0){
+    //   result = "양수";
+    // }else if(num==0){
+    //   result = "0";
+    // }else{
+    //   result = "음수";
+    // }
+    // document.write(result+"<br>");
+
+
+    //
+    function loginBtn(){
+      //alert("로그인 버튼");
+      var id = document.getElementById("id").value;
+      var pw = document.getElementById("pw").value;
+      //console.log(id,pw);
+
+      //id :aaa, 비밀번호 : 1111 들어오면 
+      // true : 로그인이 되었습니다. 알럿창
+      // false : 아이디 또는 패스워드가 일치하지 않습니다. 알럿창
+      if(id=="aaa" && pw == "1111"){
+        alert("로그인이 되었습니다.");
+        location.href="http://www.daum.net";
+      }else{
+        alert("아이디 또는 패스워드가 일치하지 않습니다. ");
+        document.getElementById("id").focus();
+      }
+
+
+    }
+  </script>
+</head>
+<body>
+  <form action="#" name="frm" method="get">
+    <label>아이디</label>
+    <input type="text" name="id" id="id"><br>
+    <label>비밀번호</label>
+    <input type="password" name="pw" id="pw">
+    <br>
+    <input type="button" onclick="loginBtn()" value="로그인">
+  </form>
+  
+  
+</body>
+</html>

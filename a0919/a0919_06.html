@@ -4,65 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>나의 체질량지수(BMI)</title>
-  <style>
-    *{margin:0; padding:0;
-      font-size: 14px; color:#454545; letter-spacing: -0.09em;
-      box-sizing: border-box;
-    }
-    ol,ul{list-style: none;}
-    a{text-decoration: none; color:inherit;}
-    li{ font-size:13px; font-weight: 700;}
-    .pop-body{width:650px; height:804px; padding:20px;
-      line-height: 24px;
-      border:1px solid black; margin:0 auto;
-    }
-    .message-box{width:610px; height:122px; padding:25px;
-    background: #f8f8f8; margin-bottom:10px; }
-    .form{width:610px; height:230px; padding:25px;
-      margin:0 0 30px; border:1px solid #e8e8e8;
-     }
-    .form label {font-size:15px; font-weight: 700; margin-right:12px;}
-    .form input{height:27px; outline:none;}
-    .form input[type=text]{ text-align: center; margin-right:5px; padding: 0 5px;
-      width:60px; border:1px solid #ddd; vertical-align: middle;
-    }
-    .form .dash{color:#b7b7b7; margin:0 15px;}
-    .form span{font-size: 16px;}
-    #weight+span{margin-right:110px;}
-    .compute span { font-size:16px; }
-    .compute input{color:white; font-weight: 700; width:70px;  border:none; cursor: pointer;}
-    .compute input[type=button]{ background: #0aaf6b;}
-    .compute input[type=reset]{ background: #656565;}
-    dl{width:558px; height:48px; margin:10px 0 18px; }
-    dt{float:left; width:20%; font-size: 14px;   }
-    .graph ul{ width:558px; height:35px;}
-    dd{width:80%; font-weight: 700; color:#eb4f3a;   }
-    .graph li label{display: inline-block; width:21%; margin-right:12px; 
-    font-size:13px; }
-    .graph li .dv1{width:18.5%; }
-    .graph li .dv2{width:14.5%; }
-    .graph .clearfix li{height:35px; 
-      text-align: center; color:white; line-height: 35px;
-      float:left;}
-    .low-weight {width:25%; background: #329ae3; }
-    .regular {width:25%; background: #95c520; }
-    .overweight {width:25%; background: #ee942a; }
-    .obsity {width:25%; background: #f15232; }
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script>
+    function calBtn(){
+      //alert("계산버튼 클릭");
+      var length = document.getElementById("length").value;
+      var weight = document.getElementById("weight").value;
 
-    .pop-header{width:650px; height:54px; margin:0 auto;
-      padding:15px 20px 15px 40px;
-      border-bottom:3px solid #e5e5e5;
-      background: url(images/bullet-h1.png) 20px 50% no-repeat ;
-      background-color: #0aaf6b;
+      var length2 = length / 100;
+      //수식 : 체중 / (키(m) * 키(m))
+      var bmi = weight / (length2 * length2);
+      // toFixed : 원하는 소수점 자리수를 입력하면 그 자리수 만큼 보여줌
+      var bmi2 = bmi.toFixed(2)
+
+      // BMI 지수 칸에 데이터값 넣기
+      document.getElementById("bimNumber").innerText = bmi2;
+
+      var resultText = ""; // 문자형데이터
+      // BMI지수 판별
+      if(bmi2 >= 25){
+        resultText = "비만";
+      }else if(bmi2 >= 23){
+        resultText = "과체중";
+      }else if(bmi2 >= 18.5){
+        resultText = "정상";
+      }else{
+        resultText = "저체중";
+      }
+
+      document.getElementById("resultText").innerText = resultText;
     }
-    .pop-header h1{font-size: 18px; font-weight: 700; color:white;
-      letter-spacing: -0.03em; display: inline-block; width:561px;}
-    
-    .pop-header a{ display: inline-block; width:25px; height:25px;
-      background: url(images/btn-close.png) 50% 50% no-repeat ;
-      position: relative; top:-5px;
-    }
-  </style>
+  </script>
 </head>
 <body>
   <div class="pop-header">
@@ -86,15 +58,15 @@
         <input type="text" id="weight" name="weight">
         <span>kg</span>
         <span class="compute">
-          <input type="button" id="btnCalc" value="계산">
+          <input type="button" onclick="calBtn()" id="btnCalc" value="계산">
           <input type="reset" value="초기화">
         </span>
       </form>
       <dl class="clearfix">
         <dt>비만도 결과</dt>
-        <dd id="resultText">정상입니다.</dd>
+        <dd id="resultText"></dd>
         <dt>BMI 지수</dt>
-        <dd id="bimNumber">21.60</dd>
+        <dd id="bimNumber"></dd>
       </dl>
       <ul class="graph">
         <li>

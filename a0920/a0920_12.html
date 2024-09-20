@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // // 5시30분 20초
+    var hour = 5;
+    var minute = 30;
+    var second = 20;
+    document.write(hour+"시 "+minute+"분 "+second+"초<br>");
+    // // 6시10분 15초
+    var hour2 = 6;
+    var minute2 = 10
+    var second2 = 20;
+    document.write(hour2+"시 "+minute2+"분 "+second2+"초<br>");
+    
+    // // 7시5분 59초
+    var hour3 = 7;
+    var minute3 = 10;
+    var second3 = 59;
+    document.write(hour3+"시 "+minute3+"분 "+second3+"초<br>");
+    
+    
+    // 배열선언 - 문자형,숫자형,논리형,"",null;
+    var hour = 30;
+    hour = 31;
+    var arr = [30,"안녕하세요.",true];
+    document.write(arr[0]+"<br>");
+    document.write(arr[1]+"<br>");
+    document.write(arr[2]+"<br>");
+    //7시5분 59초
+    var t1 = [5,30,20];
+    document.write(t1[0]+"시 "+t1[1]+"분 "+t1[2]+"초<br>");
+    var t2 = [6,10,15];
+    document.write(t2[0]+"시 "+t2[1]+"분 "+t2[2]+"초<br>");
+    var t3 = [7,5,59];
+    document.write(t3[0]+"시 "+t3[1]+"분 "+t3[2]+"초<br>");
+    var t4 = [8,9,40];
+    document.write(t4[0]+"시 "+t4[1]+"분 "+t4[2]+"초<br>");
+    var t5 = [9,1,1];
+    document.write(t5[0]+"시 "+t5[1]+"분 "+t5[2]+"초<br>");
+    
+    //time
+    document.write("<hr>");
+    var time = [t1,t2,t3,t4,t5];
+    for(var i=0;i<5;i++){
+      document.write(time[i][0]+"시 "+time[i][1]+"분 "+time[i][2]+"초<br>");
+    }
+    
+
+  </script>
+  
+</body>
+</html>
