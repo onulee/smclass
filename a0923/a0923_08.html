@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체</title>
+</head>
+<body>
+  <script>
+    // 날짜객체를 사용해서 오늘날짜를 출력하시오.
+    // 출력 : 2024/09/23/월요일
+    var tday = new Date();
+    var year = tday.getFullYear();
+    var month = tday.getMonth();
+    var txtMonth = month+1;
+    if(txtMonth < 10) txtMonth = "0"+txtMonth;
+    var date = tday.getDate();
+    var txtDate;
+    if(date<10) txtDate = "0"+date;
+    else txtDate = date;
+    var day = tday.getDay();
+    var txtDay; //월요일,화요일
+    if(day==0) txtDay = "일요일";
+    else if(day==1) txtDay = "월요일";
+    else if(day == 2) txtDay = "화요일";
+    else if(day == 3) txtDay = "수요일";
+    else if(day == 4) txtDay = "목요일";
+    else if(day == 5) txtDay = "금요일";
+    else txtDay = "토요일";
+
+    // 출력 2024-09-23, 월요일
+    // 출력 2024-10-01, 화요일
+    document.write(year+"-"+txtMonth+"-"+txtDate+","+txtDay);
+    document.write("<br>");
+
+    // 5자리 숫자를 입력받아, 숫자의 합을 구하시오.
+    // 12345 = 15
+    // charAt 사용하시오. -> Number
+    var number = prompt("7자리 숫자를 입력하세요.");
+    var total = 0;
+    for(var i=0;i<number.length;i++){
+      total += Number(number.charAt(i));
+    }
+    document.write("합계 : "+total+"<br>"); // 12345 + 6 + 7
+
+    // var n = Number(number.charAt(0)); 
+    // var n2 = Number(number.charAt(1)); 
+    // var n3 = Number(number.charAt(2)); 
+    // var n4 = Number(number.charAt(3)); 
+    // var n5 = Number(number.charAt(4)); 
+    // var total = n + n2 + n3 + n4 + n5;
+    //document.write("합계 : "+total+"<br>"); // 12345
+
+  </script>
+  
+</body>
+</html>

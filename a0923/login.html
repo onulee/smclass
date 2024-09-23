@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/board.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <title>포레스트 리솜</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="/"><img src="images/img_logo_re_forest.png"></a>
+      </div>
+      <div class="nav_wrap">
+        <div class="quick_menu">
+          <ul>
+            <li><a href="#">회원예약</a></li>
+            <li><a href="#">패키지 예약</a></li>
+            <li><a href="#">부대시설 예약</a></li>
+            <li><a href="#">회원가입</a></li>
+            <li><a href="#">로그인</a></li>
+          </ul>
+        </div>
+        <script>
+          function m_over(){
+            document.querySelector(".navibg").style.display='block';
+          }
+
+          function m_leave(){
+            document.querySelector(".navibg").style.display='none';
+          }
+       </script>
+        <div class="menu" onmouseover="m_over()" onmouseleave="m_leave()" >
+          <ul>
+            <li><a href="#">포레스트</a></li>
+            <li><a href="#">스파&찜질방</a></li>
+            <li><a href="#">객실</a></li>
+            <li><a href="#">특별한 경험</a></li>
+            <li><a href="#">세미나 & 연회</a></li>
+            <li><a href="#">브랜드소개</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- * 하부메뉴부분 들어감 -->
+  <div class="navibg"></div>
+  <!-- 서브페이지 배너 부분 -->
+  <div class="sub_banner"></div> 
+
+  <!--section 부분 -->
+  <section>
+    <div class="sub_naviloc">HOME <i class="fa-solid fa-chevron-right"></i> 로그인</div>
+    <div class="section">
+      <h1>로그인</h1>
+      <div class="category">
+        <ul>
+          <li ><a href="#" class="selected">회원 로그인</a></li>
+          <li ><a href="#">비회원 주문조회</a></li>
+        </ul>  
+      </div>
+      <form action="#" name="loginFrm" method="post">
+        <input type="text" name="id" size="30" placeholder="CJ ONE 통합아이디 6~20자">
+        <input type="text" name="pw" size="45" placeholder="비밀번호 영문, 특수문자, 숫자혼합 8~12자">
+        <div class="id_group">
+          <div class="save">
+            <input type="checkbox" name="id_save" id="id_save">
+            <label for="id_save"></label>
+            <span>아이디 저장</span>
+          </div>
+          <div class="find">아이디 찾기 <span>|</span> 비밀번호 찾기</div> 
+        </div>
+        <button type="button">로그인</button>
+      </form>
+  
+      <ul class="login-icons">
+        <li class="youtube">
+          <a href="#"><img src="images/youtube_btn_fnew.png"></a>
+        </li>
+        <li class="kakao">
+          <a href="#"><img src="images/kakao_ch_btn_fnew.png"></a>
+        </li>
+        <li class="insta">
+          <a href="#"><img src="images/insta_btn_fnew.png"></a>
+        </li>
+        <li class="facebook">
+          <a href="#"><img src="images/facebook_btn_fnew.png"></a>
+        </li>
+      </ul>
+  
+      <div class="sign-up-info">
+        <h3>CJ ONE 통합회원이 아니신가요?</h3>
+        <p>CJ ONE 통합회원으로 가입하시면 CJ제일제당의 다양한 서비스(COOKIT, CJ THE MARKET, CJ제일제당 홈페이지)를 이용하실 수 있습니다.</p>
+        <div class="sign-up">CJ ONE 통합회원 신규가입하기 <span class="arrow">&emsp;</span></div>
+      </div>
+    </div>
+
+
+
+
+  </section>
+
+  <!-- footer부분 -->
+  <footer>
+    <div class="footer">
+      <div class="ftnavi">
+        <ul>
+          <li><a href="#">회사소개</a></li>
+          <li><a href="#">오시는길</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">영상정보처리기기운영관리방침</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">이메일무단수집거부</a></li>
+        </ul>
+        <div class="addr">
+          <p class="add">포레스트 리솜<span>|</span>충청북도 제천시 백운면 금봉로 365</p>
+          <p class="tel">대표번호 : 043-649-6000<span></span>
+          예약문의 : 1600-0060<span></span>
+          단체문의 : 02-6177-5999<span></span>
+          분양문의 : 02-567-5555<span></span>
+          통신판매업신고 : 2011-충북제천-0016호
+          </p>
+          <p class="info">메리츠화재와 개인정보 배상책임보험 계약을 체결하여 회원 개인정보를 보호하고 있습니다.</p>
+          <p class="copy">COPYRIGHT(C) HOBAN HOTEL & RESORT. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="sns">
+          <a href="#"><img src="images/insta_btn_fnew.png"></a>
+          <a href="#"><img src="images/youtube_btn_fnew.png"></a>
+          <a href="#"><img src="images/facebook_btn_fnew.png"></a>
+          <a href="#"><img src="images/kakao_ch_btn_fnew.png"></a>
+        </div>
+        <div class="group">
+          <select name="site_go" id="site_go" class="sel_box">
+            <option value="#">패밀리사이트</option>
+            <option value="https://www.ihoban.co.kr/web">호반건설</option>
+            <option value="https://www.hobanapt.co.kr/web">호반베르디움</option>
+          </select>
+          <button type="button">GO</button>
+        </div>
+      </div>
+
+
+    </div>
+  </footer>
+
+
+
+  
+  <!-- 오른쪽 채팅메뉴 부분 -->
+  <div id="right_fixed">
+    <div class="chatting">
+      <div></div>
+      <div>채팅상담</div>
+    </div>
+    <div class="ai_chatting">
+      <div></div>
+      <div>AI 채팅상담</div>
+    </div>
+    <div class="items" >최근 본 상품(0) <span></span></div>
+    <div class="top">▲ TOP</div>
+  </div>
+
+
+  
+</body>
+</html>

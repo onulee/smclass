@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 0;
+    //객체선언
+    var b = new Object(); //객체라고 정의
+    b.color = "white"; //변수
+    b.price = 300000;  //변수
+    b.info = function(){ //함수
+      document.write("tv색상 : "+this.color+"<br>");
+      document.write("tv가격 : "+this.price+"<br>");
+    }
+    //객체선언2
+    var car = {
+      color : "white",
+      price : 5000000,
+      info:function(){
+        document.write("car 색상 : "+this.color+"<br>");
+        document.write("car 가격 : "+this.price+"<br>");
+      }
+    }
+    car.tire = 4;
+    console.log(car.tire);
+    console.log(car.color);
+    console.log(car.price);
+    console.log(a);
+
+    console.log(b.color);
+
+  </script>
+  
+</body>
+</html>

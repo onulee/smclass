@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin:0; padding:0;}
+    #wrap{width:4000px; height:3000px; 
+      font-size: 30px; text-align: center;
+      background: url(images/img_main_slide_20240612_2_pc.jpg);
+    }
+    #txt{position: fixed; width:200px; height:100px;
+       border:1px solid black;}
+  </style>
+  <script>
+    // onclick,onchange,onfocus,onscroll... 이벤트
+
+    // scrollTo- 스크롤이동, scrollY - 상하스크롤, scrollX - 좌우스크롤
+    //이벤트 등록
+    window.addEventListener('scroll',function(){
+      //console.log("스크롤 이동합니다.");
+      //console.log("스크롤 높이 : "+window.scrollY);
+      //document.getElementById("txt").innerText = window.scrollY;
+      document.getElementById("txt").innerText = window.scrollX;
+
+      if(window.scrollY > 2000){
+        document.getElementById("wrap").style.backgroundImage = "url('images/nw01.jpg')";
+      }else{
+        document.getElementById("wrap").style.backgroundImage = "url('images/img_main_slide_20240612_2_pc.jpg')";
+        
+      }
+
+      
+
+
+
+
+    });
+   
+  </script>
+</head>
+<body>
+  <div id="wrap" >
+    <div id="txt">0</div>
+  </div>
+  <button onclick="firstBtn()">처음으로 가기</button>
+  <script>
+    function firstBtn(){
+      //alert("버튼 클릭");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+  </script>
+</body>
+</html>

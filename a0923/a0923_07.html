@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자 객체</title>
+</head>
+<body>
+  <script>
+    var txt = "안녕하세요. 반갑습니다. 다음에 뵈요. 다음에 안녕";
+    document.write("문자전체 : "+txt+"<br>"); 
+    document.write("문자길이 : "+txt.length+"<br>"); //length
+    document.write("문자1개 가져오기 : "+txt.charAt(1)+"<br>"); //charAt
+    document.write("문자1개 가져오기 : "+txt.charAt(7)+"<br>"); //
+    document.write("문자 여러개 가져오기 : "+txt.substr(7,5)+"<br>"); // 시작위치점에서 개수만큼
+    document.write("문자 여러개 가져오기 : "+txt.substring(7,12)+"<br>"); // 시작위치점에서 끝위치점 앞까지
+    document.write("문자 전체 가져오기 : "+txt.substring(0,txt.length)+"<br>"); // 0-20
+    //indexOf 앞에서 부터 검색, lastIndexOf 뒤에서 부터 검색
+    document.write("문자존재 확인 : "+txt.indexOf("다음에")+"<br>"); // indexOf - 위치값 리턴
+    document.write("문자존재 확인 : "+txt.indexOf("내일")+"<br>"); // indexOf - 없으면 -1리턴
+    document.write("문자존재 확인 : "+txt.indexOf("에")+"<br>"); // indexOf
+    //match
+    document.write("문자존재 확인 : "+txt.match("다음")+"<br>"); // 있으면 값 리턴
+    document.write("문자존재 확인 : "+txt.match("내일")+"<br>"); // 없으면 null 리턴
+    //search
+    document.write("문자존재 확인 : "+txt.search("음")+"<br>"); // 있으면 위치값 리턴
+    document.write("문자존재 확인 : "+txt.search("내일")+"<br>"); // 없으면 -1 리턴
+    //replace - 문자를 변경, 1번만 진행 2개이상이 있으면 1개만 변경되고 나머지는 변경안됨.
+    //replaceAll 없음.
+    document.write("문자 취환 : "+txt.replace("요","까")+"<br>"); // 문자를 변경
+    document.write("문자 취환 : "+txt.replace("다음에","next")+"<br>"); // 문자를 변경
+    //정규표현식 g:발생할 모든 패턴에 대한 검색
+    
+    // toLowerCase()-소문자 변경, toUpperCase()-대문자 변경
+    // split - 1개의 문자를 배열로 리턴
+    document.write("배열 리턴 : "+txt.split(" ")+"<br>"); // 문자를 변경
+    var arr = txt.split(" ");
+    document.write("배열[1] : "+arr[1]+"<br>"); // 문자를 변경
+
+
+
+      
+  </script>
+  
+</body>
+</html>

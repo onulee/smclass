@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll 객체</title>
+  <style>
+    *{margin:0; padding:0;}
+    #wrap{width:2000px; height:3000px; border:1px solid black;}
+    #d_wrap{position: fixed;}
+    #txt{width:200px; height:100px; border:1px solid black; background: yellow;
+    font-size: 30px; text-align: center;}
+    #img1{width:300px; height:200px; border:1px solid black;
+    background: url(images/a01.jpg);}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="d_wrap">
+      <div id="txt">000</div>
+      <button id="b01" onclick="btn01()">500 하단이동</button>
+      <button id="b02" onclick="btn02()">1000 이동</button>
+      <button id="b03" onclick="btn03()">2000 이동</button>
+      <div id="img1"></div>
+    </div>
+  </div>
+  
+  <script>
+    //window 이벤트 실행문
+    window.addEventListener("scroll",function(){
+      window.scrollY;
+      window.scrollX;
+      console.log(window.scrollY);
+      console.log(window.scrollX);
+      document.getElementById("txt").innerText = window.scrollY;
+
+      if(window.scrollY>2000){
+        document.getElementById("img1").style.backgroundImage = "url('images/a02.jpg')";
+      }else if(window.scrollY>1000){
+        document.getElementById("img1").style.backgroundImage = "url('images/a03.jpg')";
+      }else if(window.scrollY>500){
+        document.getElementById("img1").style.backgroundImage = "url('images/a04.jpg')";
+      }else{
+        document.getElementById("img1").style.backgroundImage = "url('images/a01.jpg')";
+
+      }
+    });
+
+
+    // 이벤트 실행문
+    // document.getElementById("b01").addEventListener("click",function(){
+    //   alert("버튼 클릭");
+    // });
+
+    function btn01(){
+      window.scrollTo({top:500,behavior:"smooth"});
+    }
+    function btn02(){
+      window.scrollTo({top:1000,behavior:"smooth"});
+    }
+    function btn03(){
+      window.scrollTo({top:2000,behavior:"smooth"});
+    }
+  </script>
+</body>
+</html>
