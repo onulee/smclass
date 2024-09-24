@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wrap{width:500px; height:400px; border:1px solid black;
+    overflow: hidden;}
+    img{width:100%;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <img id="img" src="images/i1.jpg">
+  </div>
+  <button onclick="prev()">이전</button>
+  <button onclick="next()">다음</button>
+  <script>
+    var count = 1;
+    function next(){
+      // html태그의 속성변경 - setAttribute
+      count++;
+      if(count>4) count = 1;
+      console.log(count);
+      document.querySelector("#img").setAttribute("src","images/i"+count+".jpg");
+    }
+    function prev(){
+      // html태그의 속성변경 - setAttribute
+      count--;
+      if(count<1) count = 4;
+      console.log(count);
+      document.querySelector("#img").setAttribute("src","images/i"+count+".jpg");
+    }
+  </script>
+  
+</body>
+</html>

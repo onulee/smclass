@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //함수선언
+    function a_input(){
+      console.log(1);
+      console.log(2);
+      b_input(); //함수호출
+    }
+
+    //함수선언
+    function b_input(){
+      document.write("안녕하세요.");
+    }
+
+    //함수선언
+    function calc(a,b,c){
+      return (a+b+c)
+    }
+
+    //함수선언
+    function send_txt(){
+      //퀴즈 txt1,txt2,txt3
+
+      var data = calc(50,50,30);
+      document.querySelector("#c1").innerText = data;
+    }
+
+  </script>
+
+  <button onclick="a_input()">함수호출</button>
+  <br>
+  <div id="c1">0</div>
+  <input type="text" id="txt1"><br>
+  <input type="text" id="txt2"><br>
+  <input type="text" id="txt3"><br>
+  <button onclick="send_txt()">확인</button>
+</body>
+</html>

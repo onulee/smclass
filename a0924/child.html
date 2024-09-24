@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자식창</title>
+</head>
+<body>
+  <h1>자식창</h1>
+  <label>부모창에서 자식창으로 전달 된 값</label>
+  <input type="text" id="c_input">
+  <br>
+  <br>
+  <hr>
+  <label>자식창에서 부모창으로 값 전달</label>
+  <input type="text" id="cc_input">
+  <input type="button" onclick="send_value()" value="값 전달">
+  <script>
+    function send_value(){
+      //alert("부모창으로 값전달");
+      opener.document.querySelector("#pp_input").value = document.querySelector("#cc_input").value;
+      window.close();
+    }
+  </script>
+  
+</body>
+</html>

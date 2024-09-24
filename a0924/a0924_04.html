@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모달창</title>
+  <style>
+    *{margin:0; padding:0;}
+    #modal_wrap{
+      width:100%; height:100%; position: fixed; top:0; left:0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center; align-items: center;
+    }
+
+    #modal_wrap.hidden{display: none;}
+
+    #modal_con{
+      position: absolute;
+      background: white;
+      width:300px; height: 350px; padding:15px; 
+    }
+    #modal_con h1{text-align: center; margin: 20px 0;}
+    #modal_con p{line-height: 30px;}
+    #mbtn { display: block; width:80px; height:40px; margin:80px auto 0; }
+
+  </style>
+</head>
+<body>
+  <h1>메인창</h1>
+  <div id="txt">안녕하세요.</div>
+  <button id="modal_open" onclick="modal_open()">모달창 열기</button>
+  <div id="modal_wrap" class="hidden">
+    <div id="modal_con">
+      <h1>공지사항 안내</h1>
+      <p>메인창의 .txt에 글자 입력</p>
+      <input type="text" id="input_txt"><br>
+      
+      <button id="mbtn" onclick="addcls()">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    function modal_open(){
+      document.querySelector("#modal_wrap").classList.remove("hidden");
+    }
+    function addcls(){
+      document.querySelector("#modal_wrap").classList.add("hidden");
+      //input->value, 그외 -> innerText,innerHtml
+      document.querySelector("#txt").innerText = document.querySelector("#input_txt").value;
+    }
+  </script>
+  
+</body>
+</html>

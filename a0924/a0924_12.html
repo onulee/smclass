@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>취미</h1>
+  <form action="http://www.daum.net" name="frm" method="get">
+    <input type="checkbox" name="hobby" id="game" class="hobby" value="game">
+    <label for="game">게임</label><br>
+    <input type="checkbox" name="hobby" id="golf" class="hobby" value="golf">
+    <label for="golf">골프</label><br>
+    <input type="checkbox" name="hobby" id="swim" class="hobby" value="swim">
+    <label for="swim">수영</label><br>
+    <input type="checkbox" name="hobby" id="run" class="hobby" value="run">
+    <label for="run">조깅</label><br>
+    <input type="checkbox" name="hobby" id="book" class="hobby" value="book">
+    <label for="book">독서</label><br>
+    <br>
+    <button type="button" onclick="hobbyBtn()">확인</button>
+  </form>
+  <script>
+    function hobbyBtn(){
+      //alert("버튼클릭");
+      //체크박스가 4개 이상 되어 있지 않으면, 4개이상 체크하셔야 확인 가능합니다. 
+      //모두 체크 하시겠습니까? 모두 체크하시오.
+      var count=0;
+      console.log(document.querySelectorAll(".hobby").length);
+      
+      // 체크박스 체크 된 개수 확인
+      for(var i=0;i<document.querySelectorAll(".hobby").length;i++){
+        if(document.querySelectorAll(".hobby")[i].checked == true){
+          count++;
+        }
+      }
+      //비교
+      if(count<4){
+        alert("취미를 4개 이상 하셔야 다음진행이 가능합니다.");
+        if(confirm("취미를 모두 선택할까요>")){
+          // for(var j=0;j<document.querySelectorAll(".hobby").length;j++){
+          //   document.querySelectorAll(".hobby")[i].checked == true;
+          // }
+          //forEach
+          document.querySelectorAll(".hobby").forEach(function(d){
+            console.log(d);
+            d.checked = true;
+          });
+
+
+        }
+        return false;
+      }
+      console.log("총 체크 개수 : "+count);
+
+      //frm.submit();
+
+    }
+  </script>
+  
+</body>
+</html>

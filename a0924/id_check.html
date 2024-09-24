@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID 체크</title>
+</head>
+<body>
+  <h1>아이디 중복확인</h1>
+  <label>아이디를 입력하시고, 확인버튼을 클릭하세요.</label>
+  <input type="text" name="cid" id="cid">
+  <button type="button" onclick="id_confirm()">아이디 중복검사</button>
+  <br>
+  <label>아이디를 사용가능합니다. 확인버튼을 클릭하세요.</label>
+  <button type="button" onclick="send_id()">확인</button>
+  <script>
+    function send_id(){
+      //alert("값전달");
+      opener.document.querySelector("#id").value = document.querySelector("#cid").value;
+      window.close();
+    }
+  </script>
+  
+</body>
+</html>

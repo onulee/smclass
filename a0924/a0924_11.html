@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="http://www.daum.net" name="agreeFrm" method="get">
+    <label>동의1</label>
+    <input type="checkbox" name="agree" class="agree" value="yes"  >
+    <br>
+    <label>동의2</label>
+    <input type="checkbox" name="agree2" class="agree" value="yes">
+    <br>
+    <label>동의3</label>
+    <input type="checkbox" name="agree3" class="agree" value="yes" >
+    <br>
+
+    <button type="button" onclick="membership()">다음</button>
+    
+  </form>
+  <script>
+      function membership(){
+        // 속성값 : 읽기 - getAttribute, 변경 - setAttribute 
+       console.log(document.querySelectorAll(".agree").length);
+       //<input type="checkbox" name="agree" class="agree" value="yes" >
+       console.log(document.querySelectorAll(".agree")[0]);
+       console.log(document.querySelectorAll(".agree")[0].getAttribute("value"));
+       console.log(document.querySelectorAll(".agree")[0].checked); 
+       //checkbox가 체크 되어 있으면 checked=true, 체크되어 있지 않으면 checked=false;
+
+       //동의 체크가 모두 되어 있는지 확인
+       var all_agree = document.querySelectorAll(".agree"); 
+       for(var i=0;i<all_agree.length;i++){
+        if(!all_agree[i].checked){
+          if(confirm("모두 동의를 하지 않으면 회원가입이 불가합니다 모두 동의할까요?")){
+            for(var j=0;j<all_agree.length;j++){
+              all_agree[j].checked = true;
+            }
+          }
+          return false; //여기 위치에서 더이상 진행하지 않음.
+        }
+       }
+       
+       agreeFrm.submit(); //form action을 실행시킴.
+      
+      }
+  </script>
+  
+</body>
+</html>

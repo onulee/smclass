@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #txt{width:100px; height:40px; text-align: center; border:1px solid black;}
+  </style>
+  <script>
+    var a = 50; //전역변수
+    var b = 10;
+    
+    //함수선언
+    function add_num(){
+      var c = 5; //지역변수
+      document.querySelector("#txt").innerText = a+b; 
+    }
+
+    //함수선언
+    function minus_num(){
+      document.querySelector("#txt").innerText = a-b;
+    }
+    //함수선언
+    function multi_num(){
+      document.querySelector("#txt").innerText = a*b;
+    }
+    //함수선언
+    function divi_num(){
+      document.querySelector("#txt").innerText = a/b;
+    }
+  </script>
+</head>
+<body>
+  <div id="txt">0</div>
+  <button onclick="add_num()">더하기</button>
+  <button onclick="minus_num()">빼기</button>
+  <button onclick="multi_num()">곱하기</button>
+  <button onclick="divi_num()">나누기</button>
+
+
+  
+</body>
+</html>
