@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <title>Document</title>
+  <script>
+    //제이쿼리 구문
+    $(function(){
+    
+      //슬라이드 닫침
+      $(".btn2").click(function(){
+        $(".box").stop();
+        $(".box").slideUp(1000,"linear",function(){
+          
+        }
+      );
+    })
+    //슬라이드 열림
+    $(".btn1").click(function(){
+        $(".box").stop();
+        $(".box").slideDown(1000,"linear",function(){
+
+          }
+        );
+      })
+
+      $(".btn3").on("click",function(){
+        $(".box").fadeIn(500,"swing",function(){
+
+        })
+      });
+
+      //toggle효과
+      $(".btn4").on("click",function(){
+        $(".box").stop();
+        $(".box").slideToggle(500,"linear");
+      });
+
+
+    });//제이쿼리 구문
+  </script>
+  <style>
+    .content{
+      width:400px;
+      border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn1">슬라이드열림</button>
+  <button class="btn2">슬라이드닫침</button>
+  <button class="btn3">페이드 in</button>
+  <button class="btn4">toggle</button>
+  <br>
+  <div class="box">
+    <div class="content">
+      백종원 더본코리아 대표가 운영하는 저가 커피전문점 '빽다방'의 음료에 비닐봉지가 갈려 들어가 이를 먹은 10대 아이들이 복통을 호소했다고 연합뉴스가 25일 보도했다.
+      연합뉴스에 따르면 제보자 A씨는 지난 7일 16살 딸과 12살 아들을 데리고 전북의 한 빽다방 매장에서 쿠키크런치빽스치노 등 3잔의 음료를 주문해 마셨다. 그런데 아이들이 초콜릿 쿠키를 갈아 넣어 만든 쿠키크런치빽스치노를 약 80% 정도 먹었을 때 음료에서 까칠하고 잘 안 씹히는 이물질을 발견했다.
+    </div>
+
+  </div>
+
+  
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>  
+  <title>Document</title>
+  <style>
+    h1{text-align: center;}
+    table,th,td{border:1px solid black; border-collapse: collapse;}
+    table{width:800px; margin:10px auto;}
+    th,td{width:200px; height:40px; text-align: center;}
+    th:nth-child(2){width:800px;}
+  </style>
+  <script>
+    $(function(){
+        //text(),html(),css(),attr()
+        var data = "";
+        var titleArr = [
+          "익스프레스 체크아웃 서비스 오픈",
+          "안전한 먹거리 제공을 위해 한국식품안전관리인증원MOU체결",
+          "해브나인 스파 이용요금 인상안내",
+          "해브나인 스파 7년 연속 '우수웰니스관광지' 선정",
+          "호반호텔앤리조트 산학협력 우수기업 표창",
+          "제천 주요 여행지 제휴혜택 안내",
+          "리솜리조트 캐릭터 공모전 수상작 발표",
+          "리오(RE:O) 론칭 기념 이벤트 당첨자 발표",
+          "리솜리조트 캐릭터 공모전 (접수 마감)",
+          "리조트 실내 공공시설 마스크 착용 안내"
+        ];
+
+        for(var i=0;i<10;i++){
+          data += `<tr id='${i+1}' >`;
+          data += `<td class='num'>${i+1}</td>`;
+          data += `<td><a href='#'>${titleArr[i]}</a></td>`;
+          data += "<td>관리자</td>";
+          data += "<td class='dd'><button class='delBtn'>삭제</button></td>";
+          data += "</tr>";
+        }
+        
+        $("#tbody").html(data); 
+        //document.getElementById("tbody").innerHTML = data; //자바스크립트
+
+        //btn클릭 - 정적이벤트
+        $("#btn").click(function(){
+          alert("버튼 클릭");
+          console.log("class 속성값 : "+ $("#tbody").attr("class"));
+        })
+
+        //num클릭이벤트
+        $(".num").click(function(){
+          alert("num클릭");
+          console.log($(this).next().text());
+          console.log($(this).next().next().text());
+          console.log($(this).next().next().next().html());
+        });
+
+        // $(document).on("click","#btn",function(){
+        //    alert("동적이벤트 버튼");
+        // });
+        // $("#btn").on("click",function(){
+        // });
+
+        //표준 이벤트 등록 - 동적이벤트
+        // $(document).on("click change keyup","#btn",function(){
+        // });
+
+
+        //delBtn클릭이벤트
+        $(".delBtn").click(function(){
+          console.log($(this).closest("tr").attr("id"))
+
+          //var pthis = $(this).parent();
+          //console.log(pthis.prev().text());
+          
+          
+          // alert("삭제버튼 클릭");
+          // console.log( $(this).parent().parent().attr("id"));
+          // var delId =  $(this).parent().parent().attr("id");
+          // $("#"+delId).remove();
+        });
+        
+        
+
+
+
+    });
+
+    // 함수선언
+    // function btn(){
+    //   alert("버튼 클릭");
+    //   document.querySelector("#btn")
+    // }
+
+
+  </script>
+</head>
+<body>
+  <h1>게시판</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody id="tbody" class="c01">
+      
+    </tbody>
+    <button id="btn">tbody class값</button>
+  </table>
+</body>
+</html>

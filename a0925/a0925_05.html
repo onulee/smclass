@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>Document</title>
+  <script>
+    //jquery선언
+    $(function(){
+      //데이터버튼 이벤트
+      $("#dataBtn").click(()=>{
+        alert("데이터를 로딩중...");
+        //ajax선언
+        $.ajax({
+          url:"https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json",
+          type:"get",
+          data:"",
+          dataType:"json",
+          success:function(data){
+            //console.log(data);
+            console.log(data.response.body.items);
+            var g_item = data.response.body.items.item;
+            console.log(g_item[0].galTitle);
+
+            var h_data = "";
+            for(var i=0;i<g_item.length;i++){
+              h_data += `<tr>`;
+              h_data += `<td>${g_item[i].galContentId}</td>`;
+              h_data += `<td>${g_item[i].galTitle}</td>`;
+              h_data += `<td>${g_item[i].galModifiedtime}</td>`;
+              h_data += `<td>${g_item[i].galPhotographer}</td>`;
+              h_data += `<td><img src='${g_item[i].galWebImageUrl}'></td>`;
+              h_data += `<td><button class='delBtn' >삭제</button></td>`;
+              h_data += `</tr>`;
+            }
+
+            $("#tbody").html(h_data);
+
+          },
+          error:function(){
+            alert("실패");
+          }
+        });//ajax
+      });
+
+    });//jquery
+   
+  </script>
+  <style>
+    h1{text-align: center;}
+    table,th,td{border:1px solid black; border-collapse: collapse;}
+    table{width:80%; margin:0 auto;}
+    th,td{width:150px; height:40px; text-align: center;}
+    th:nth-child(2){width:500px;}
+    div{width:600px; margin:30px auto; border:1px solid black;}
+    img{width:100px;}
+  </style>
+</head>
+<body>
+  <h1>게시판</h1>
+  <button id="dataBtn">데이터 가져오기</button>
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>촬영일</th>
+        <th>촬영자</th>
+        <th>이미지</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      
+    </tbody>
+  </table>
+
+   
+</body>
+</html>

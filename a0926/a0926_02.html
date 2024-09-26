@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="js/box_script.js"></script>
+  <title>Document</title>
+  <style>
+    #wrap{text-align: center;}
+    #main{width:1000px; height:100px; border:2px solid black;
+      margin:50px auto;
+    }
+    #box{width:100px; height:100px; box-sizing: border-box;
+         border:5px solid black; background: yellow; 
+         position: relative;
+         left:0; 
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <h1>박스 이동</h1>
+    <button id="left">좌측이동</button>
+    <button id="right">우측이동</button>
+  </div>
+  <div id="main">
+    <div id="box"></div>
+  </div>
+  
+</body>
+</html>

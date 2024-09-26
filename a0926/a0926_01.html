@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="js/script.js"></script>
+  <title>학생성적프로그램</title>
+  
+  <style>
+    button{width:80px; height:40px;}
+    #wrap{width:600px; margin:20px auto;}
+    #dataBtn{width:200px; height:40px; margin-bottom:20px;}
+    h1{text-align: center;}
+    table,th,td{border:1px solid black; border-collapse: collapse;}
+    table{width:80%; margin:0 auto;}
+    th,td{width:150px; height:40px; text-align: center;}
+    form{margin-bottom:10px;}
+    #update,#updateCancel{display: none;}
+
+  </style>
+</head>
+<body>
+  <h1>게시판</h1>
+  <div id="wrap">
+    <button id="dataBtn">데이터 가져오기</button>
+    <form>
+      <label>이름</label>
+      <input type="text" name="name" id="name"><br>
+      <label>국어</label>
+      <input type="text" name="kor" id="kor"><br>
+      <label>영어</label>
+      <input type="text" name="name" id="eng"><br>
+      <label>수학</label>
+      <input type="text" name="name" id="math"><br>
+    </form>
+      <button type="button" id="create">입력</button>
+      <button type="button" id="update">수정완료</button>
+      <button type="button" id="updateCancel">수정취소</button>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>국어</th>
+        <th>영어</th>
+        <th>수학</th>
+        <th>합계</th>
+        <th>평균</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr id="1">
+        <td>1</td>
+        <td>홍길동</td>
+        <td>100</td>
+        <td>100</td>
+        <td>100</td>
+        <td>300</td>
+        <td>100.00</td>
+        <td>
+          <button class="updateBtn">수정</button>
+          <button class="delBtn">삭제</button>
+        </td>
+      </tr>
+            
+    </tbody>
+  </table>
+
+   
+</body>
+</html>
