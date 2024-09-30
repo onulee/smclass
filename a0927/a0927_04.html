@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #main{width:800px; margin:30px auto; text-align: center;}
+    #wrap{width:800px; height:400px; border:3px solid black; margin-top:30px;}
+    select{width:120px; height:40px;}
+    button{width:120px; height:40px;}
+  </style>
+  <script>
+    $(function(){
+      // let labelArr = ['홍길동', '유관순', '강감찬', '김구', '이순신', '김유신','홍길자','홍길순','이세종','신사임당'];
+      // let dataArr = [99,100,30,50,20,30,70,80,40,85];
+      let labelArr = [];
+      let dataArr = [];
+
+      //배열 - 데이터추가
+      let stuUrl = "js/stuData.json";
+      //ajax
+      $.ajax({
+        url:stuUrl,
+        type:"get",
+        data:"",
+        dataType:"json",
+        success:function(data){
+          //alert("성공");
+          console.log(data); //30개
+          // for(let i=0;i<data.length;i++){
+          //   console.log(data[i].name);
+          // }
+
+          // 배열 data -> idx:순번, val:데이터값
+          // val.name.split(" ") - 2개배열 ['홍','Keoghan']
+          $.each(data,function(idx,val){
+            console.log(val.name.split(" ")[1]);
+            labelArr.push(val.name.split(" ")[1]);
+            let score = ((val.kor+val.eng+val.math)/3).toFixed(2);
+            dataArr.push(score);
+          })//each
+
+          console.log(labelArr);
+          console.log(dataArr);
+        },
+        error:function(){
+          alert("실패");
+        }
+      });//ajax
+
+      
+      //btn클릭
+      $(document).on("click","#btn",function(){
+        // ----- 데이터 10개 가져오기 ------
+        let labelArr2 = [];
+        let dataArr2 = [];
+        let firstNum = 0;
+        let lastNum = 0;
+        console.log("select 값 : "+$("#dataList").val());
+        lastNum = $("#dataList").val();
+        if($("#dataList").val()==10) firstNum = 0;
+        else if($("#dataList").val()==20) firstNum = 10;
+        else if($("#dataList").val()==30) firstNum = 20;
+
+        //해당되는 10개 가져오기
+        for(var i=firstNum;i<lastNum;i++){
+          labelArr2.push(labelArr[i]);
+          dataArr2.push(dataArr[i]);
+        }
+
+        console.log(labelArr2);
+        console.log(dataArr2);
+
+
+        // ----- 그래프 그리기 ------
+        const ctx = document.getElementById('myChart');
+
+        let chartStatus = Chart.getChart("myChart");
+        if(chartStatus != undefined){
+          console.log("success");
+          chartStatus.destroy();
+        }
+        
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labelArr2,
+            datasets: [{
+              label: '학생성적프로그램',
+              data: dataArr2,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        //------ end ----------
+
+        
+      })//btn
+
+    });//jquery
+
+  </script>
+</head>
+<body>
+  <div id="main">
+    <select name="dataList" id="dataList">
+      <option value="10">1-10</option>
+      <option value="20">11-20</option>
+      <option value="30">21-30</option>
+    </select>
+    <button id="btn">데이터 불러오기</button>
+    <br>
+    <h1>학생성적프로그램</h1>
+    <div id="wrap">
+      <canvas id="myChart"></canvas>
+    </div>
+
+  </div>
+  
+</body>
+</html>

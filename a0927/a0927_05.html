@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Document</title>
+  <style>
+    #main{width:800px; margin:50px auto;}
+    #wrap{width:800px; height:400px; border:1px solid black; margin-top:20px;}
+
+  </style>
+  <script>
+    //jquery구문
+    $(function(){
+      //데이터 불러오기
+      $("#dataBtn").click(function(){
+        alert("데이터 불러오기 버튼");
+      });//dataBtn
+
+
+    });//jquery
+  </script>
+</head>
+<body>
+  <div id="main">
+    <button id="dataBtn">데이터불러오기</button>
+    <br>
+    <div id="wrap">
+      <canvas id="myChart"></canvas>
+    </div>
+
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <title>Document</title>
+  <script>
+    //제이쿼리 선언
+    $(function(){
+
+      //버튼클릭시 데이터가 입력되어 있는지 확인
+      $("#membership").click(function(){
+
+        //정규표현식
+
+
+        // 3자리 영문자 체크
+        // let count = 0;
+        // let eng = $("#eng").val(); //3자리 - 3   aaa, abz, 1ab, a1b, ab1
+        // for(let i=0;i<eng.length;i++){
+        //   if(!(eng[i]>='a' && eng[i]<='z')) count++;
+        // }
+
+        // if(count>0){
+        //   alert("영문자가 아닙니다.다시 입력하세요.")
+        //   return false;
+        // }
+
+
+        //문자 키코드 - ab1, abc, a2c
+        // if($("#eng").val()>='a' && $("#eng").val()<='z'){
+        //   alert("영문자입니다.");
+        // }else{
+        //   alert("영문자가 아닙니다.");
+        // }
+        
+
+
+        //숫자이면서 4자리 이상 입력을 해야 함
+        // if(isNaN($("#number").val()) || $("#number").val().length<4 ){
+        //   alert("숫자와 4자리 이상 입력을 하셔야 합니다.");
+        // }
+
+        // 숫자인지 체크 - 자바스크립트 문법
+        // if(isNaN($("#number").val())){
+        //   alert("숫자만 입력이 가능합니다.");
+        // }
+
+        // 숫자인지 체크 - jquery문법
+        // if(!$.isNumeric($("#number").val())){
+        //   alert("숫자만 입력이 가능합니다.");
+        //   return false;
+        // }
+
+        // //빈공백 체크
+        // if($("#id").val() == ""){
+        //   alert("아이디를 입력하셔야 합니다.");
+        //   return false;
+        // }
+
+        // // 3자리이상 체크
+        // if($("#id").val().length<3){
+        //   alert("아이디는 3자리 이상을 입력하셔야 합니다.");
+        //   return false;
+        // }
+      })
+
+    });
+
+  </script>
+</head>
+<body>
+  <h1>회원가입</h1>
+  <form action="#" name="frm" method="post">
+    
+    <label>아이디</label>
+    <input type="text" name="id" id="id"><br>
+    <label>번호</label>
+    <input type="text" name="number" id="number"><br>
+    <label>영문자3개 입력</label>
+    <input type="text" name="eng" id="eng"><br>
+
+    <button type="button" id="membership">확인</button>
+
+  </form>
+  
+</body>
+</html>
