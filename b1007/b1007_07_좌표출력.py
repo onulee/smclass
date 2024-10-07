@@ -9,8 +9,9 @@ a_list = [
 ]
 for i in range(3):
   for j in range(3):
-    a_list[lotto[3*i+j]]
+    a_list[i][j] = lotto[3*i+j]
 
+print(a_list)
 
 aa_list = [
   ["로또","로또","로또"],
