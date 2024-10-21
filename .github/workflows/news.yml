@@ -1,0 +1,85 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+# 알림창
+name: 뉴스속보 수집
+
+# on
+# 어떤 조건일때 파일을 실행 시킬지
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 파일을 실행하는 공간
+jobs:
+  build:
+
+    # 서버 실행공간 - 깃허브의 우분투 환경 사용 : 필요한 라이브러리 설치 필요함.
+    runs-on: ubuntu-latest
+
+    # 버전별 실행을 설정하는 공간 : 주석 또는 삭제, 필요없음.
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     python-version: ["3.9", "3.10", "3.11"]
+
+    # steps별 실행단계
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        # 실행순서 최신버전 업그레이드
+        python -m pip install --upgrade pip
+
+    # 필요한 라이브러리 설치해야 함.
+    - name : library install
+      run : |
+        pip install requests
+        pip install beautifulsoup4
+        pip install pandas
+        pip install lxml
+        
+        # 모두 주석 또는 삭제 : 필요없음.
+    #     python -m pip install flake8 pytest
+    #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    # - name: Lint with flake8
+    #   run: |
+    #     # stop the build if there are Python syntax errors or undefined names
+    #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+    #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    # 내가 만든 파이썬 파일 실행
+    - name: run my file
+      run: |
+        python3 news.py
+
+    # 커밋
+    - name : commits
+      run : |
+        git config --global user.email "onulee@naver.com"
+        git config --global user.name "lee"
+        # csv파일을 추가
+        git add data.csv 
+        git commit -m "뉴스데이터 수집"
+
+    # push 작업진행
+    - name : push
+      uses : ad-m/github-push-action@master
+      with :
+        branch : "main"
+        github_token : $
+        
+
+        
+      
+        
+
+
+        
