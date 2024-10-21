@@ -8,3 +8,18 @@
 # 1. 학생성적입력
 # 2. 학생성적출력
 # 3. 학생성적수정
+
+class Student:
+  def __init__(self,no,name):
+    self.no = no 
+    self.name = name
+
+students = []
+s1 = Student(1,"홍길동")
+print(s1.no)
+s2 = Student(2,"유관순")
+students.append(s1)
+students.append(s2)
+
+for s in students:
+  print(s.no,s.name)
