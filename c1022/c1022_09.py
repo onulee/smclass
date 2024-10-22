@@ -13,6 +13,9 @@ n_lists.sort(key=lambda x:x[1],reverse=True)
 print("이름정렬 :", n_lists)
 
 
+
+
+
 # a = ""
 # print(int(a))
 # print("완료")
