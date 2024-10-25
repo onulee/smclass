@@ -26,7 +26,8 @@ for i,r_list in enumerate(r_lists):
   rnews = r_list.select_one("div.list_content>a").text
   print(rnews)
   f.write(f"{no},{rnews}\n")
-  
+
+
 f.close()  
 
 # 메일보내기
