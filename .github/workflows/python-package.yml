@@ -13,7 +13,7 @@ on:
   # schedule :
   #  - cron : "10 * * * *"
   
-  
+  # main구동될때마다
   push:
     branches: [ "main" ]
   pull_request:
@@ -22,7 +22,6 @@ on:
 # 파일을 실행하는 공간
 jobs:
   build:
-
     # 서버 실행공간 - 깃허브의 우분투 환경 사용 : 필요한 라이브러리 설치 필요함.
     runs-on: ubuntu-latest
     
