@@ -48,7 +48,7 @@ msg["To"] = recvEmail
 msg.attach(MIMEText(content))
 
 # 파일첨부
-with open("c1025/news.txt",'rb') as f:
+with open("news.txt",'rb') as f:
   attachment = MIMEApplication(f.read()) # 파일첨부
   attachment.add_header('Content-Disposition','attachment',filename="news.txt")
   msg.attach(attachment)
