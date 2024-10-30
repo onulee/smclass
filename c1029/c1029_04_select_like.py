@@ -38,6 +38,7 @@ cursor.execute(sql,num1=num1,num2=num2)
 title = ['employee_id','emp_name','salary']
 a_list = [] # dict타입으로 변경해서 저장하시오.
 rows = cursor.fetchall()
+print("개수 : ",len(rows))
 for row in rows:
   a_list.append(dict(zip(title,row)))
   print(row)
