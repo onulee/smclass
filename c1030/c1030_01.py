@@ -30,7 +30,7 @@ while True:
     cursor = conn.cursor()
     sql = "select * from member where id=:id and pw=:pw"
     cursor.execute(sql,id=user_id,pw=user_pw)
-    row = cursor.fetchone() # None
+    row = cursor.fetchone() # None 1개
     print(row)
     if row != None:
       print(f"로그인 성공! {row[2]} 님 환영합니다.")
@@ -38,13 +38,6 @@ while True:
       print("아이디 또는 패스워드가 일치하지 않습니다. 정확히 입력하세요!! ")  
     cursor.close()
     
-    # 오라클db에 접속해서 member테이블에서 검색 가져옴.
-    # if user_id == 'aaa' and user_pw == "1111":
-    #   print("로그인 성공")
-    # else:
-    #   print("로그인 실패")
-    #   continue
-      
     print("[ 학생성적 프로그램에 접속합니다. ]")  
     ### 프로그램 구현 ###  
     
@@ -54,6 +47,7 @@ while True:
     # 아이디 있는지 확인
     conn = connects()
     cursor = conn.cursor()
+    # id가 있는지 확인 -> 메일
     sql = "select * from member where id=:id"
     cursor.execute(sql,id=search)
     row = cursor.fetchone()
