@@ -6,4 +6,5 @@ urlpatterns = [
   # views.py 연결 - 함수호출, app함수이름
   path('write/',views.write,name="write"),
   path('save/',views.save,name="save"),
+  path('list/',views.list,name="list"),
 ]

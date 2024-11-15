@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학생전체리스트</title>
+  <script>
+    // 자바스크립트 주석
+  </script>
+  <style>
+    .main{text-align:center; margin:20px auto;}
+    table{margin:0 auto; margin-bottom:20px;}
+    table,th,td{border:1px solid black; border-collapse:collapse; }
+    th,td{width:150px; height:40px; }  
+    button{width:150px; height:45px; }
+  </style>
+</head>
+<body>
+  <!-- html주석 -->
+  {# django 주석  #} 
+  <div class='main'>
+    <h2>학생전체리스트</h2>
+    <table>
+      <tr>
+        <th>이름</th>
+        <th>학과</th>
+        <th>학년</th>
+        <th>나이</th>
+        <th>성별</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+      {% if list  %}
+        {% for s in list %}
+          <tr>
+            <td>{{s.s_name}}</td>
+            <td>{{s.s_major}}</td>
+            <td>{{s.s_grade}}</td>
+            <td>{{s.s_age}}</td>
+            <td>{{s.s_gender}}</td>
+            <td><a href="#">수정</a></td>
+            <td><a href="#">삭제</a></td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan='7'>데이터가 존재하지 않습니다.</td>
+        </tr>
+      {% endif %}
+    </table>
+    <a href='/'><button>홈으로</button></a>
+    <a href='/students/write/'><button>학생정보입력</button></a>
+  
+</body>
+</html>

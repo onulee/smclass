@@ -6,10 +6,10 @@
   <title>학생등록페이지</title>
 </head>
 <body>
-  
   <h2><a href="/">학생등록페이지</a></h2>
   <!-- url 링크방식 : students/save/ -->
-  <form action="/students/save/" method="POST" name="frm">
+  <form action="{% url 'students:write' %}" method="POST" name="frm">
+  {% comment %} <form action="/students/write/" method="POST" name="frm"> {% endcomment %}
   {% comment %} <form action="{% url 'students:save' %}" method="POST" name="frm"> {% endcomment %}
      {% csrf_token %}
     <label>학생이름</label>
