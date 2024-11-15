@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>학생등록페이지</title>
 </head>
 <body>
-  <h2>학생등록페이지</h2>
-  <form action="" method="post" name="frm">
+  
+  <h2><a href="/">학생등록페이지</a></h2>
+  <!-- url 링크방식 : students/save/ -->
+  <form action="{% url 'students:save' %}" method="post" name="frm">
+    {% csrf_token %} 
+    <label>학생이름</label>
+    <input type='text' name='s_name'><br>
+    <label>학과</label>
+    <input type='text' name='s_major'><br>
+    <label>학년</label>
+    <input type='text' name='s_grade'><br>
+    <label>나이</label>
+    <input type='text' name='s_age'><br>
+    <label>성별</label>
+    <input type='text' name='s_gender'><br>
+    <input type='submit' value='저장'>
+    <input type='reset' value='취소'>
 
   </form>
   
