@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학생전체리스트</title>
+  <style>
+    * {margin:0; padding:0; }
+    #main{text-align:center; margin-top:50px;}
+    button{width:150px; height:40px; text-align:center; }
+    table{margin:30px auto;}
+    table,th,td{border:1px solid black; border-collapse:collapse; }
+    th,td{height:40px; width:150px;}
+  </style>
+</head>
+<body>
+  <div id='main'>
+    <h2>학생전체리스트</h2>
+    <table>
+      <tr>
+        <th>이름</th>
+        <th>학과</th>
+        <th>학년</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+      {% if slist %}
+        {% for s in slist %}
+        <tr>
+          <td><a href="{% url 'students:view' s.name  %}">{{s.name}}</a></td>
+          <td>{{s.major}}</td>
+          <td>{{s.grade}}</td>
+          <td><a href="">수정</a></td>
+          <td><a href="">삭제</a></td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan='5'>입력된 데이터가 없습니다.</td>
+        </tr>  
+      {% endif %}
+    </table>
+    <a href='/'><button>메인페이지</button></a>
+    <a href='/students/write/'><button>학생입력</button></a>
+
+  </div>
+  
+</body>
+</html>

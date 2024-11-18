@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>학생성적입력</title>
+  <style>
+    * {margin:0; padding:0;}
+    #main{text-align:center; margin-top:50px;}
+    h2 { margin:30px auto;}
+    label{width:150px; display: inline-block;}
+    .r { width:50px;}
+    input[type='button'],button{width:150px; height:40px; text-align:center;}
+  </style>
+</head>
+<body>
+  <div id='main'>
+    <h2><a href='/'>학생성적입력</a></h2>
+    {% comment %} <form action="{% url 'students:write' %}" method='post' name='sfrm'> {% endcomment %}
+    <form action="/students/write/" method='post' name='sfrm'>
+      {% csrf_token %}
+      <label>이름</label>
+      <input type='text' name='name' class='name'><br>
+      <label>학과</label>
+      <input type='text' name='major'><br>
+      <label>학년</label>
+      <input type='text' name='grade'><br>
+      <label>나이</label>
+      <input type='text' name='age'><br>
+      <label>성별</label>
+      <input type='radio' name='gender' id='M' value='M'>
+      <label class='r' for='M'>남자</label>
+      <input type='radio' name='gender' id='F' value='F'>
+      <label class='r' for='F'>여자</label>
+      <br><br>
+      <input type='button' onclick='saveChk()' value='저장'>
+      <button type='button' onclick='cancel()'>취소</button>
+    </form>
+    <script>
+      function cancel(){
+        location.href='/students/list/' 
+      }
+      function saveChk(){
+        if ($(".name").val().length<2){
+          alert("이름은 2자리 이상 입력하셔야 합니다.");
+          $(".name").focus();
+          return false;
+        }else{
+          alert("데이터를 전송합니다.");
+          sfrm.submit();
+        }
+
+      }
+    </script>
+  </div>
+  
+</body>
+</html>
