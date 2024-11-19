@@ -1,70 +1,70 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-# 알림창
-name: 뉴스속보 수집
+# # 알림창
+# name: 뉴스속보 수집
 
-# on
-# 어떤 조건일때 파일을 실행 시킬지
-on:
-  # 특정시간이 될때마다 실행하는 명령어 입력
-  # cron표현식 사용
-  # 참조사이트 : https://crontab.guru/
-  # schedule :
-  #  - cron : "10 * * * *"
+# # on
+# # 어떤 조건일때 파일을 실행 시킬지
+# on:
+#   # 특정시간이 될때마다 실행하는 명령어 입력
+#   # cron표현식 사용
+#   # 참조사이트 : https://crontab.guru/
+#   # schedule :
+#   #  - cron : "10 * * * *"
   
-  # main구동될때마다
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+#   # main구동될때마다
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-# 파일을 실행하는 공간
-jobs:
-  build:
-    # 서버 실행공간 - 깃허브의 우분투 환경 사용 : 필요한 라이브러리 설치 필요함.
-    runs-on: ubuntu-latest
+# # 파일을 실행하는 공간
+# jobs:
+#   build:
+#     # 서버 실행공간 - 깃허브의 우분투 환경 사용 : 필요한 라이브러리 설치 필요함.
+#     runs-on: ubuntu-latest
     
-    permissions:
-      contents: write
+#     permissions:
+#       contents: write
       
-    # steps별 실행단계
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        # 실행순서 최신버전 업그레이드
-        python -m pip install --upgrade pip
+#     # steps별 실행단계
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Set up Python ${{ matrix.python-version }}
+#       uses: actions/setup-python@v3
+#       with:
+#         python-version: ${{ matrix.python-version }}
+#     - name: Install dependencies
+#       run: |
+#         # 실행순서 최신버전 업그레이드
+#         python -m pip install --upgrade pip
 
-    # 필요한 라이브러리 설치해야 함.
-    - name : library install
-      run : |
-        pip install requests
-        pip install beautifulsoup4
-        pip install pandas
-        pip install lxml
+#     # 필요한 라이브러리 설치해야 함.
+#     - name : library install
+#       run : |
+#         pip install requests
+#         pip install beautifulsoup4
+#         pip install pandas
+#         pip install lxml
         
-    # 내가 만든 파이썬 파일 실행
-    - name: run my file
-      run: |
-        python3 news.py
+#     # 내가 만든 파이썬 파일 실행
+#     - name: run my file
+#       run: |
+#         python3 news.py
 
-    # 커밋
-    - name : Commits
-      run : |
-        git config --global user.email "onulee@naver.com"
-        git config --global user.name "lee"
-        # csv파일을 추가
-        git add news.txt 
-        git commit -m "뉴스데이터 수집"
+#     # 커밋
+#     - name : Commits
+#       run : |
+#         git config --global user.email "onulee@naver.com"
+#         git config --global user.name "lee"
+#         # csv파일을 추가
+#         git add news.txt 
+#         git commit -m "뉴스데이터 수집"
 
-    # push 작업진행
-    - name : Push
-      uses : ad-m/github-push-action@master
-      with :
-        branch : "main"
+#     # push 작업진행
+#     - name : Push
+#       uses : ad-m/github-push-action@master
+#       with :
+#         branch : "main"
         
