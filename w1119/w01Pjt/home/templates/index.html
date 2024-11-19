@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인페이지1</title>
+</head>
+<body>
+  <h2>메인페이지1</h2>
+  <ul>
+    <li><a href="/admin/">admin관리자</a></li>
+    <li><a href="/students/list/">학생리스트</a></li>
+    <li><a href="/students/write/">학생등록</a></li>
+    <li><a href="/">HOME</a></li>
+  </ul>
+  <img src="{% static 'images/best01.jpg' %}" >
+  <img src="/static/images/best01.jpg" >
+  
+</body>
+</html>

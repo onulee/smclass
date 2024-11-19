@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>학생전체리스트</title>
+  <style>
+    *{margin:0; padding:0;}
+    .main{margin:30px auto; text-align:center;}
+    h2{margin:30px 0;}
+    table,th,td{border:1px solid black; border-collapse:collapse;}
+    table{width:1200px; margin:30px auto;}
+    th,td{height:45px; width:200px;}
+    button{width:120px; height:40px;}
+    .search{width:190px; height:40px; padding-left:10px; margin-top:50px;}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h2>학생전체리스트</h2>
+    <h4>등록인원 : {{slist.count}} 명</h4>
+    <form action="{% url 'students:search' %}" method='get' name="sfrm">
+      <input type="search" name='search' class='search'>
+      <button type="submit" class='sbtn'>검색</button>
+    </form>
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>학과</th>
+        <th>학년</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+      {% for s in slist %}
+      <tr>
+        <td>{{s.id}}</td>
+        <td><a href="{% url 'students:view' s.name  %}">{{s.name}}</a></td>
+        <td>{{s.major}}</td>
+        <td>{{s.grade}}</td>
+        <td><button type='button' onclick="location.href='/students/update?name={{s.name}}'">수정</button></td>
+        <td><button type='button' onclick="delbtn('{{s.name}}')">삭제</button></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <button onclick="location.href='/'">홈으로</button>
+    <button onclick="location.href='/students/write/'" >학생입력</button>
+  </div>
+  <script>
+    function delbtn(name){
+      if(confirm(name+" 님 학생정보를 삭제하시겠습니까?")){
+        location.href = "/students/delete/"+name
+      }
+    }
+  </script>
+
+  
+</body>
+</html>

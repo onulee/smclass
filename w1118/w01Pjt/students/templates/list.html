@@ -28,7 +28,7 @@
         {% for s in slist %}
         <tr>
           <td><a href="{% url 'students:view' s.name  %}">{{s.name}}</a></td>
-          <td>{{s.major}}</td>
+          <td><a href="{% url 'students:view' '홍홍홍'  %}">{{s.major}}</a></td>
           <td>{{s.grade}}</td>
           <td><a href="">수정</a></td>
           <td><a href="">삭제</a></td>

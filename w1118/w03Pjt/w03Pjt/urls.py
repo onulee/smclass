@@ -3,5 +3,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('studnets/', include('students.urls')), #urls추가
+    path('students/', include('students.urls')), #urls추가
 ]

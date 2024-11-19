@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from students.models import Student
+from django.urls import reverse
+
 
 # 학생삭제
 def delete(request,name):
@@ -57,11 +59,14 @@ def view(request,name):
   print("이름정보 :",name)
   qs = Student.objects.filter(name=name) # 1개데이터-list, 없을경우 {}
   print(qs)
-  context = {'stu':qs[0]}
-  return render(request,'view.html',context)
-  # qs = Student.objects.get(name = name)  # 없을경우 에러
-  # qs = get_object_or_404(Student,name = name)  # 없을경우 구문리턴
-
+  if qs.exists():
+    context = {'stu':qs[0]}
+    return render(request,'view.html',context)
+    # qs = Student.objects.get(name = name)  # 없을경우 에러
+    # qs = get_object_or_404(Student,name = name)  # 없을경우 구문리턴
+  else:
+    print('데이터가 없습니다.')
+    return redirect("students:list")
 
 # 학생리스트
 def list(request):

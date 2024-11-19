@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>학생상세보기</title>
+  <style>
+    * {margin:0; padding:0;}
+    .main{margin:30px auto; text-align:center;}
+    table,th,td{border:1px solid black; border-collapse:collapse;}
+    table{width:700px; margin:30px auto;}
+    th,td{width:150px; height:45px; }
+    button{width:120px; height:40px; }
+    .c01{width:50px;}
+    .c02{width:250px;}
+  </style>
+</head>
+<body>
+  <div class='main'>
+    <h2>학생상세보기</h2>
+    <table>
+      <tr>
+        <th class="c01">제목</th>
+        <th class="c02">내용</th>
+      </tr>
+      <tr>
+        <th>번호</th>
+        <td>{{stu.id}}</td>
+      </tr>
+      <tr>
+        <th>이름</th>
+        <td>{{stu.name}}</td>
+      </tr>
+      <tr>
+        <th>학과</th>
+        <td>{{stu.major}}</td>
+      </tr>
+      <tr>
+        <th>학년</th>
+        <td>{{stu.grade}}</td>
+      </tr>
+      <tr>
+        <th>나이</th>
+        <td>{{stu.age}}</td>
+      </tr>
+      <tr>
+        <th>성별</th>
+        <td>{{stu.gender}}</td>
+      </tr>
+      <tr>
+        <th>취미</th>
+        <td>{{stu.hobby}}</td>
+      </tr>
+    </table>
+    <button onclick="location.href='/students/update?name={{stu.name}}'">수정</button>
+    <button onclick="delbtn('{{stu.name}}')">삭제</button>
+    <button onclick="location.href='/'">홈으로</button>
+    <button onclick="location.href='/students/list/'">리스트</button>
+  </div>
+  <script>
+    function delbtn(name){
+      if (confirm(name+" 님 정보를 삭제하시겠습니까?")){
+        location.href='/students/delete/'+name
+      }
+    }
+  </script>
+</body>
+</html>

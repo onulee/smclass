@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>학생등록</title>
+  <style>
+    * {margin:0; padding:0;}
+    .main{margin:30px auto; width:500px; text-align:center;}
+    h2{margin-bottom:30px;}
+    td{height:30px;}
+    .c01{width:100px;}
+    select{width:173px;}
+    button{width:120px; height:40px; margin-top:20px;}
+  </style>
+</head>
+<body>
+  <div class='main'>
+    <h2>학생등록</h2>
+    <form action="{% url 'students:write' %}" method="post" name='wfrm'>
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td class="c01">이름</td>
+          <td class="c02"><input type='text' name='name' id='name'></td>
+        </tr>
+        <tr>
+          <td>학과</td>
+          <td><input type='text' name='major' id='major'></td>
+        </tr>
+        <tr>
+          <td>학년</td>
+          <td>
+            <select name="grade" id="grade">
+              <option value="1">1학년</option>
+              <option value="2">2학년</option>
+              <option value="3">3학년</option>
+              <option value="4">4학년</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>나이</td>
+          <td><input type='text' name='age' id='age'></td>
+        </tr>
+        <tr>
+          <td>성별</td>
+          <td>
+            <input type='radio' name='gender' id='male' value='남자'>
+            <label for='male'>남자</label>
+            <input type='radio' name='gender' id='female' value='여자'>
+            <label for='female'>여자</label>
+          </td>
+        </tr>
+        <tr>
+          <td>취미</td>
+          <td>
+            <input type='checkbox' name='hobby' id='game' value='game'>
+            <label for='game'>게임</label>
+            <input type='checkbox' name='hobby' id='golf' value='golf'>
+            <label for='golf'>골프</label>
+            <input type='checkbox' name='hobby' id='swim' value='swim'>
+            <label for='swim'>수영</label>
+            <input type='checkbox' name='hobby' id='run' value='run'>
+            <label for='run'>조깅</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type='button' onclick="sbtn()">저장</button>
+            <button type='button' onclick="cbtn()">취소</button>
+          </td>
+        </tr>
+        <script>
+          function sbtn(){
+            if ($("#name").val().length<2){
+              alert("이름은 2자리 이상 입력하셔야 합니다.")
+              return false;
+            }
+            alert('학생을 등록합니다.')
+            // 디장고 views로 POST 전송
+            wfrm.submit();
+
+          }
+
+          function cbtn(){
+            alert("메인페이지로 이동합니다.")
+            location.href="/"
+          }
+        </script>
+      </table>
+    </form>
+  </div>
+
+  
+</body>
+</html>
