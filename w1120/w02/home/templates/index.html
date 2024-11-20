@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인페이지</title>
+</head>
+<body>
+  <h2>메인페이지</h2>
+  <h4>쿠키정보{{request.COOKIES}}</h4>
+  <h4>섹션정보{{request.session.session_id}}</h4>
+  
+  <ul>
+    {% if not request.session.session_id %}
+      <h4>로그인을 하셔야 더 많은 정보를 볼수 있습니다.</h4>
+      <li><a href="/member/login/">로그인</a></li>
+      {% else %}
+      <h4>{{request.session.session_nicName}} 님 환영합니다.</h4>
+      <li><a href="/member/logout/">로그아웃</a></li>
+      <li><a href="/member/mlist/">회원리스트</a></li>
+      <li><a href="/member/cookWrite/">쿠키만들기</a></li>
+      <li><a href="/member/cookDelete/">쿠키삭제</a></li>
+      <li><a href="/admin/">admin관리자</a></li>
+    {% endif %}
+  </ul>
+  
+</body>
+</html>

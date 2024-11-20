@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원옵션</title>
+</head>
+<body>
+  <h2>회원옵션</h2>
+  <!-- m2.html 에서 회원권번호,금액,옵션을 쿠키에 저장 :데이터 111, 100000, no1-->
+  <form action="{% url 'member:m2' %}" method="post" name="loginFrm">
+    {% csrf_token %}
+    <label>회원권번호</label>
+    <input type='text' name='memberId' id='memberId'><br>  
+    <label>금액</label>
+    <input type='text' name='money' id='money' ><br>
+    <label>옵션</label>
+    <input type='text' name='option' id='option'><br>
+    <input type='checkbox' name='saveMember' value='1' id='saveMember' >
+    <label for="saveMember">회원정보저장</label><br>
+    <input type='submit' value="회원가입">
+
+  </form>
+  
+</body>
+</html>

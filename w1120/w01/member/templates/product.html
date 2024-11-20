@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품구매</title>
+</head>
+<body>
+  <h2>상품구매</h2>
+  <form action="{% url 'member:product' %}" method="post" name="loginFrm">
+    {% csrf_token %}
+    <label>상품번호</label>
+    <input type='text' name='pId' id='pId' value="{{c_pId}}"><br>
+    <label>상품명</label>
+    <input type='text' name='pName' id='pName' value="{{c_pName}}"><br>
+    <label>상품옵션</label>
+    <input type='text' name='pOption' id='pOption'><br>
+    <input type='checkbox' name='saveProduct' value='1' id='saveProduct' {% if c_pId%}checked{%endif%} >
+    <label for="saveProduct">상품기억하기</label><br>
+    <input type='submit' value="상품저장">
+
+  </form>
+  
+</body>
+</html>

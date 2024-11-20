@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿠키삭제</title>
+  <style>
+    div{width:200px; height:30px; border:1px solid black; }
+  </style>
+</head>
+<body>
+  <h2>쿠키삭제</h2>
+  <form action="{% url 'member:cookDelete' %}" method="post" name="loginFrm">
+    {% csrf_token %}
+    {% for c in request.COOKIES %}
+      <div>{{c}}</div>
+    {% endfor %}
+    <label>쿠키key</label>
+    <input type='text' name='ckey' id='ckey' ><br>
+    <input type='submit' value="쿠키삭제">
+  </form>
+  
+</body>
+</html>

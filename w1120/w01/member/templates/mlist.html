@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>회원리스트</title>
+  <style>
+    *{margin:0; padding:0;}
+    .main{margin:30px auto; text-align:center;}
+    h2{margin:30px 0;}
+    table,th,td{border:1px solid black; border-collapse:collapse;}
+    table{width:1200px; margin:30px auto;}
+    th,td{height:45px; width:200px;}
+    button{width:120px; height:40px;}
+    .search{width:190px; height:40px; padding-left:10px; margin-top:50px;}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h2>회원리스트</h2>
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>아이디</th>
+        <th>패스워드</th>
+        <th>이름</th>
+        <th>닉네임</th>
+        <th>가입일</th>
+      </tr>
+      {% if mlist %}
+        {% for m in mlist  %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{m.id}}</td>
+            <td>{{m.pw}}</td>
+            <td>{{m.name}}</td>
+            <td>{{m.nicname}}</td>
+            <td>{{m.cdate|date:'Y-m-d H:i'}}</td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="6">회원정보가 없습니다.</td>
+        </tr>
+      {% endif %}
+      
+    </table>
+    <button onclick="location.href='/'">홈으로</button>
+    <button onclick="location.href='/member/mwrite/'" >회원정보입력</button>
+  </div>
+    
+</body>
+</html>
