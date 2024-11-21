@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="{% static  'css/notice_list.css' %}">
+</head>
+<body>
+<section>
+    <h1>회원리스트</h1>
+    <div class="wrapper">
+      <form action="/search" name="search" method="post">
+        <select name="category" id="category">
+          <option value="0">전체</option>
+          <option value="name">이름</option>
+          <option value="id">아이디</option>
+        </select>
+
+        <div class="title">
+          <input type="text" size="16">
+        </div>
+  
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+
+    <table>
+      <colgroup>
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="20%">
+        <col width="20%">
+        <col width="15%">
+      </colgroup>
+      <!-- 제목부분 -->
+      <tr>
+        <th>번호</th>
+        <th>아이디</th>
+        <th>패스워드</th>
+        <th>이름</th>
+        <th>닉네임</th>
+        <th>가입일</th>
+      </tr>
+      <!-- 내용부분 -->
+       {% if mlist %}
+        {% for m in mlist %}
+          <tr>
+            <td><span class="table-notice">{{forloop.counter}}</span></td>
+            <td class="table-title"><a href="/member/mview/{{m.id}}/">{{m.id}}</a></td>
+            <td>{{m.pw}}</td>
+            <td>{{m.name}}</td>
+            <td>{{m.nickname}}</td>
+            <td>{{m.mdate|date:'Y-m-d'}}</td>
+          </tr>
+        {% endfor %}
+      {%else%}
+        <tr>
+          <td colspan='6'>데이터가 없습니다.</td>
+        </tr>
+      {%endif%}
+    </table>
+
+    <ul class="page-num">
+      <li class="first"></li>
+      <li class="prev"></li>
+      <li class="num"><div>1</div></li>
+      <li class="next"></li>
+      <li class="last"></li>
+    </ul>
+
+    <a href="/"><div class="write">홈으로</div></a>
+    <a href="/member/mwrite/"><div class="write">쓰기</div></a>
+  </section>
+
+</body>
+</html>

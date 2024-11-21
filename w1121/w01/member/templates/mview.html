@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원상세보기</title>
+  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/read.css'%}">
+  <script>
+    $(function(){
+      $(".delBtn").click(function(){
+        if(confirm("{{mem.id}} 님 데이터를 삭제하시겠습니까?")){
+          alert("데이터 삭제");
+          location.href='/member/mdelete/{{mem.id}}/'
+        }
+      })
+    });
+  </script>
+</head>
+<body>
+<section>
+    <h1>회원상세보기</h1>
+
+    <table>
+      <colgroup>
+        <col width="20%">
+        <col width="80%">
+      </colgroup>
+      <tr>
+        <th>아이디</th>
+        <th>{{mem.id}}</th>
+      </tr>
+      <tr>
+        <td><strong>패스워드</strong></td>
+        <td>{{mem.pw}}</td>
+      </tr>
+      <tr>
+        <td><strong>이름</strong></td>
+        <td>{{mem.name}}</td>
+      </tr>
+      <tr>
+        <td><strong>닉네임</strong></td>
+        <td>{{mem.nickname}}</td>
+      </tr>
+      <tr>
+        <td><strong>전화번호</strong></td>
+        <td>{{mem.tel}}</td>
+      </tr>
+      <tr>
+        <td><strong>성별</strong></td>
+        <td>{{mem.gender}}</td>
+      </tr>
+      <tr>
+        <td><strong>취미</strong></td>
+        <td>{{mem.hobby}}</td>
+      </tr>
+      
+      <tr>
+        <td colspan="3"><strong>다음</strong> <span class="separator">|</span> 홍길동</td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>이전</strong> <span class="separator">|</span> 유관순</td>
+      </tr>
+    </table>
+
+    <a href="{% url 'member:mlist' %}"><div class="list">회원리스트</div></a>
+    <a class='delBtn'><div class="list">회원삭제</div></a>
+    <a href="{% url 'member:mupdate' mem.id %}"><div class="list">회원수정</div></a>
+  </section>
+</body>
+</html>

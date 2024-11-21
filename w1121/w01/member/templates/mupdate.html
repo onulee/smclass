@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>회원정보수정</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/write.css'%}">
+  <style>
+    input[type='radio'],input[type='checkbox']{width:20px; margin-right:3px; vertical-align:middle;}
+    label{margin-right:20px;}
+  </style>
+  <script>
+    $(function(){
+      $(".write").click(function(){
+        if($("#id").val().length<2){
+          alert("아이디는 2자리 이상입력하셔야 가능합니다.");
+          $("#id").focus();
+          return false;
+        }
+        writeFrm.submit();
+      });
+    })
+  </script>
+</head>
+<body>
+<section>
+    <h1>회원정보수정</h1>
+    <hr>
+    <form action="{% url 'member:mupdate' mem.id  %}" name="writeFrm" method="post">
+      {% csrf_token %}
+      <table>
+        <colgroup>
+          <col width="15%">
+          <col width="85%">
+        </colgroup>
+        <tr>
+          <th>아이디</th>
+          <input type="hidden" name="id" id="id" value="{{mem.id}}">
+          <td>
+            {{mem.id}}
+          </td>
+        </tr>
+        <tr>
+          <th>패스워드</th>
+          <td>
+            <input type="password" name="pw" value="{{mem.pw}}">
+          </td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td>
+            <input type="text" name="name" value="{{mem.name}}">
+          </td>
+        </tr>
+        <tr>
+          <th>닉네임</th>
+          <td>
+            <input type="text" name="nickname" value="{{mem.nickname}}">
+          </td>
+        </tr>
+        <tr>
+          <th>전화번호</th>
+          <td>
+            <input type="text" name="tel" value="{{mem.tel}}">
+          </td>
+        </tr>
+        <tr>
+          <th>성별</th>
+          <td>
+            <input type="radio" name="gender" id='male' value="남자" {%if '남자' in mem.gender%}checked{%endif%}  >
+            <label for="male">남자</label>
+            <input type="radio" name="gender" id='female' value="여자" {%if '여자' in mem.gender%}checked{%endif%}>
+            <label for="female">여자</label>
+          </td>
+        </tr>
+        <tr>
+          <th>취미</th>
+          <td>
+            <input type="checkbox" name="hobby" id='game' value="game" {%if 'game' in mem.hobby%}checked{%endif%}>
+            <label for="game">게임</label>
+            <input type="checkbox" name="hobby" id='golf' value="golf" {%if 'golf' in mem.hobby%}checked{%endif%}>
+            <label for="golf">골프</label>
+            <input type="checkbox" name="hobby" id='swim' value="swim" {%if 'swim' in mem.hobby%}checked{%endif%}>
+            <label for="swim">수영</label>
+            <input type="checkbox" name="hobby" id='run' value="run" {%if 'run' in mem.hobby%}checked{%endif%}>
+            <label for="run">조깅</label>
+            <input type="checkbox" name="hobby" id='book' value="book" {%if 'book' in mem.hobby%}checked{%endif%}>
+            <label for="book">독서</label>
+            
+          </td>
+        </tr>
+        
+      </table>
+      <hr>
+      <div class="button-wrapper">
+        <button type="button" class="write">수정완료</button>
+        <button type="button" class="cancel" onclick="javascript:location.href='/member/mlist/'">취소</button>
+      </div>
+    </form>
+
+  </section>
+
+</body>
+</html>

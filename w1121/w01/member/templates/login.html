@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+    <link rel='stylesheet' href="{% static 'css/style2.css' %}">
+    <title>로그인</title>
+    <script>
+        // 아이디와 패스워드가 일치하지 않을때
+        if ('{{login_msg}}' != ''){
+            alert('{{login_msg}}');
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+        <h1>
+            <a href="/" id="h_logo"></a>
+        </h1>
+    </div>
+    <div id="container">
+        <div id="content">
+            <div style="margin-bottom: 7px"></div>
+            <form action="{% url 'member:login' %}" method='post' name='mfrm'>
+                {% csrf_token %}
+                <fieldset style="border: 0">
+                    <div class="id_area">
+                        <div class="input_row" id="id_area">
+                            <span class="input_box">
+                                <input type="text" name="id" id="uId" class="int" placeholder="아이디">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pw_area">
+                        <div class="input_row" id="pw_area">
+                            <span class="input_box">
+                                <input type="text" name="pw" id="uPw" class="int" placeholder="비밀번호">
+                            </span>
+                        </div>
+                    </div>
+                    <input class="btn_login" type="button" onclick="writeBtn()" value="로그인">
+                </fieldset>
+            </form>
+            <script>
+                function writeBtn(){
+                    if ($("#uId").val().length < 2){
+                        alert("아이디는 2자리 이상 입력하셔야 합니다.")
+                        $("#uId").focus();
+                        return false;
+                    }
+                    alert("로그인을 진행합니다.")
+                    mfrm.submit()
+                }
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+</html>

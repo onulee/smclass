@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/home/style.css' %}" rel='stylesheet'>
+  <title>메인페이지</title>
+  <style>
+    img {width:200px;}
+    a {cursor: pointer; text-decoration:none; color:inherit; }
+  </style>
+  <script>
+    function logoutBtn(){
+      alert("로그아웃이 되었습니다.")
+      location.href = '/member/logout/';
+    }
+  </script>
+</head>
+<body>
+  <h2>메인페이지</h2>
+  <img src="{% static 'images/a01.jpg' %}">
+  <img src="/static/images/a02.jpg"><br>
+  {% if not request.session.session_id %}
+    <h4>로그인을 하셔야 링크가 나타납니다.</h4>
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="/member/login/">login</a></li>
+    </ul>
+  {% else %}
+    <h4>{{request.session.session_nickname}} 님 환영합니다.</h4>
+    <ul>
+      <li><a onclick="logoutBtn()">logout</a></li>
+      <li><a href="/admin">admin관리자</a></li>
+      <li><a href="/member/mlist">회원리스트</a></li>
+    </ul>
+  {% endif %}
+</body>
+</html>
