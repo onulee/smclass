@@ -20,8 +20,8 @@
 <section>
     <h1>게시글수정</h1>
     <hr>
-
-    <form action="/board/bmodify/{{board.bno}}/" name="modify" method="post">
+    <form name="modify" method="post">
+    {% comment %} <form action="/board/bmodify/{{board.bno}}/" name="modify" method="post"> {% endcomment %}
       {% csrf_token %}
       <table>
       <input type="hidden" name="bno" value="{{board.bno}}">

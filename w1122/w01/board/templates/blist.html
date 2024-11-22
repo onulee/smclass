@@ -10,7 +10,14 @@
   <link rel="stylesheet" href="{% static 'css/style.css'%}">
   <link rel="stylesheet" href="{% static 'css/notice_list.css'%}">
   <script>
-    
+    if ('{{d_msg}}'!=''){
+      alert("게시글이 삭제되었습니다.");
+      location.href='/board/blist/'
+    }
+    if ('{{r_msg}}'!=''){
+      alert("답변달기가 등록되었습니다.");
+      location.href='/board/blist/'
+    }
   </script>
 </head>
 <body>
@@ -59,6 +66,9 @@
           <tr>
             <td><span class="table-notice">{{board.bno}}</span></td>
             <td class="table-title">
+              {% if board.bindent > 0 %}
+                 {% for i in "x"|rjust:board.bindent %}▶{% endfor %}
+              {%endif%}
               <a href="/board/bview/{{board.bno}}/">{{board.btitle}}</a>
             </td>
             <td>{{board.id}}</td>
