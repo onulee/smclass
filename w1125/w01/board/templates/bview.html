@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css'%}">
   <link rel="stylesheet" href="{% static 'css/read.css'%}">
+  <style>a{cursor: pointer;}</style>
+  <script>
+    function deleteBtn(){
+      if(confirm("{{board.bno}} 번 게시글을 삭제하시겠습니까?")){
+        location.href="/board/bdelete/{{board.bno}}/";
+      }
+    }
+  </script>
 </head>
 <body>
 <section>
@@ -33,6 +41,15 @@
         <td colspan="3" class="article">{{board.bcontent}}</td>
       </tr>
       <tr>
+        <td colspan="3" class="article">
+          {% if board.bfile %}
+          <img src="{{board.bfile.url}}" style="width:600px;">
+          {% else %}
+          이미지 파일없음
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
         <td colspan="3"><strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내</td>
       </tr>
       <tr>
@@ -41,9 +58,9 @@
     </table>
 
     <a href="/board/blist/"><div class="list">목록</div></a>
-    <a href=""><div class="list">삭제</div></a>
-    <a href=""><div class="list">수정</div></a>
-    <a href=""><div class="list">답변달기</div></a>
+    <a onclick="deleteBtn()"><div class="list">삭제</div></a>
+    <a href="/board/bupdate/{{board.bno}}/"><div class="list">수정</div></a>
+    <a href="/board/breply/{{board.bno}}/"><div class="list">답변달기</div></a>
   </section>
 </body>
 </html>

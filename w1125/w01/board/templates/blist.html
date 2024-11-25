@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="{% static '/css/style.css'%}">
   <link rel="stylesheet" href="/static/css/notice_list.css">
+  <style>a{text-decoration:none; color:inherit;  }</style>
+  <script>
+    if("{{dmsg}}" != ""){
+      alert("{{dmsg}}번 게시글이 삭제되었습니다.")
+      location.href="/board/blist/";
+    }
+  </script>
 </head>
 <body>
 <section>
@@ -51,7 +58,12 @@
         <tr>
           <td><span class="table-notice">{{board.bno}}</span></td>
           <td class="table-title">
-            <a href="/board/bview/{{board.bno}}/">{{board.btitle}}</a>
+            <a href="/board/bview/{{board.bno}}/">
+              {% if board.bindent > 0  %}
+                {% for i in ""|rjust:board.bindent  %}└{% endfor %}
+              {% endif %}
+              {{board.btitle}}
+            </a>
             <!-- html주석 -->
             {% comment %} 디장고주석 {% endcomment %}
           </td>

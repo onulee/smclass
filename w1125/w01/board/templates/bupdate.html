@@ -4,53 +4,53 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
-  <title>글쓰기</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>글수정</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="{% static '/css/style.css'%}">
   <link rel="stylesheet" href="{% static '/css/write.css'%}">
   <script>
-    if ("{{wmsg}}" == "1"){
-      alert("게시글이 저장되었습니다.")
-      location.href='/board/blist/';
-    }
-
-    function writeBtn(){
-      if ($("#btitle").val().length<1){
-        alert("제목을 입력하셔야 저장이 가능합니다.");
-        $("#btitle").focus()
-        return false;
-      }
-      writeFrm.submit()
-    }
+    //제이쿼리선언문
+    $(function(){
+      $(".write").click(function(){
+        if($("#btitle").val().length<2){
+          alert("제목은 2자리 이상 입력하셔야 수정이 가능합니다.");
+          $("#btitle").focus()
+          return false;
+        }
+        updateFrm.submit()
+      });
+    });
   </script>
 </head>
 <body>
 <section>
-    <h1>글쓰기</h1>
+    <h1>게시글수정</h1>
     <hr>
 
-    <form action="/board/bwrite/" name="writeFrm" method="post" enctype="multipart/form-data">
+    <form action="" name="updateFrm" method="post">
       {% csrf_token %}
       <table>
+      <input type="hidden" name="bno" value="{{board.bno}}">
         <colgroup>
           <col width="15%">
           <col width="85%">
         </colgroup>
         <tr>
           <th>작성자</th>
-          <td>{{request.session.session_id}}</td>
+          <td>{{board.member.name}}</td>
         </tr>
         <tr>
           <th>제목</th>
           <td>
-            <input type="text" name="btitle" id="btitle">
+            <input type="text" name="btitle" id="btitle" value="{{board.btitle}}">
           </td>
         </tr>
         <tr>
           <th>내용</th>
           <td>
-            <textarea name="bcontent" cols="50" rows="10"></textarea>
+            <textarea name="bcontent" cols="50" rows="10">{{board.bcontent}}
+            </textarea>
           </td>
         </tr>
         <tr>
@@ -62,8 +62,8 @@
       </table>
       <hr>
       <div class="button-wrapper">
-        <button type="button" onclick='writeBtn()' class="write">작성완료</button>
-        <button type="button" class="cancel" onclick="javascript:location.href='/'">취소</button>
+        <button type="button" class="write">수정완료</button>
+        <button type="button" class="cancel" onclick="javascript:location.href='/board/blist/'">취소</button>
       </div>
     </form>
 
