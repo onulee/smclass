@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인페이지</title>
+  <style>a{cursor: pointer;}</style>
+  <script>
+    function logoutBtn(){
+      alert("로그아웃 되었습니다.")
+      location.href='/member/logout/';
+    }
+  </script>
+</head>
+<body>
+  <h2>메인페이지</h2>
+  {% if not request.session.session_id %}
+  <h4>로그인을 하셔야 사용이 가능합니다.</h4>
+  <ul>
+    <li><a href='/member/login/'>로그인</a></li>
+  </ul>
+  {% else %}
+  <h4>{{request.session.session_nicName}} 님 환영합니다.</h4>
+  <ul>
+    <li><a onclick='logoutBtn()'>로그아웃</a></li>
+    <li><a href='/admin/'>admin관리자</a></li>
+    <li><a href='/board/blist/'>게시판리스트</a></li>
+  </ul>
+  {% endif %}
+  
+</body>
+</html>
