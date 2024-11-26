@@ -58,7 +58,12 @@
             <td><span class="table-notice">{{board.bno}}</span></td>
             <td class="table-title">
               {% comment %} <a href="{% url 'board:bview' board.bno %}">{{board.btitle}}</a> {% endcomment %}
-              <a href="/board/bview/{{board.bno}}/">{{board.btitle}}</a>
+              <a href="/board/bview/{{board.bno}}/?npage={{npage}}">
+                {% if board.bindent %}
+                  {% for i in ""|rjust:board.bindent %}└{% endfor %}
+                {% endif %}
+                {{board.btitle}}
+              </a>
               </td>
               <td>{{board.member.name}}</td>
               <td>{{board.bdate|date:'Y-m-d H:i'}}</td>
@@ -73,12 +78,42 @@
       
     </table>
 
+    <!--
+      count : 총페이지 수
+      has_previous : 이전페이지 있는지 확인 (True,False)
+      previous_page_number : 바로 이전페이지 가져오기 (번호가져오기)
+      next_page_number : 바로 다음페이지 가져오기(번호가져오기)
+      has_next : 다음페이지 있는지 확인 (True,False)
+      num_pages : 총페이지 수 (번호가져오기)
+      page_range : 총페이지 리스트
+    -->
+
     <ul class="page-num">
+      <!-- 이전페이지 확인 -->
+      {% if blist.has_previous %}
+      <a href="/board/blist/?npage=1"><li class="first"></li></a> 
+      <a href="/board/blist/?npage={{blist.previous_page_number}}"><li class="prev"></li></a>
+      {% else %}
       <li class="first"></li>
       <li class="prev"></li>
-      <li class="num"><div>1</div></li>
+      {% endif %}
+      <!-- 순차적 페이지 넘버링 -->
+      {% for page in blist.paginator.page_range  %}
+      {% if page != npage %}
+        <a href="/board/blist/?npage={{page}}"><li class="num"><div>{{page}}</div></li></a>
+      {% else %}
+      <li class="num on"><div>{{page}}</div></li>
+      {% endif %}
+      {% endfor %}
+      
+      <!-- 이후페이지 확인 -->
+      {% if blist.has_next %}
+      <a href="/board/blist/?npage={{blist.next_page_number}}"><li class="next"></li></a>
+      <a href="/board/blist/?npage={{blist.paginator.num_pages}}"><li class="last"></li></a>
+      {% else %}
       <li class="next"></li>
       <li class="last"></li>
+      {% endif %}
     </ul>
 
     <a href="/board/bwrite/"><div class="write">쓰기</div></a>

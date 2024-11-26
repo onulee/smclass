@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>글수정</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '/css/style.css'%}">
+  <link rel="stylesheet" href="{% static '/css/write.css'%}">
+  <script>
+    if ("{{umsg}}" != ""){
+      alert("글수정이 완료되었습니다.")
+      location.href="/board/bview/{{umsg}}/";
+    }
+
+    //제이쿼리 선언
+    $(function(){
+      $(".write").click(function(){
+          if($("#btitle").val().length<2){
+              alert("게시글 제목을 작성해 주세요.")
+              $("#btitle").focus()
+              return false;
+          }
+          updateFrm.submit();
+      })
+  });
+  </script>
+</head>
+<body>
+<section>
+    <h1>게시글수정</h1>
+    <hr>
+
+    <form action="" name="updateFrm" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+      <input type="hidden" name="bno" value="{{board.bno}}">
+        <colgroup>
+          <col width="15%">
+          <col width="85%">
+        </colgroup>
+        <tr>
+          <th>작성자</th>
+          <td>{{board.member.name}}</td>
+        </tr>
+        <tr>
+          <th>제목</th>
+          <td>
+            <input type="text" name="btitle" id="btitle" value="{{board.btitle}}">
+          </td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td>
+            <textarea name="bcontent" cols="50" rows="10">{{board.bcontent}}
+           
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <th>이미지</th>
+          <td>{{board.bfile}}</td>
+        </tr>
+        <tr>
+          <th>이미지 표시</th>
+          <td>
+            <input type="file" name="bfile" id="file">
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <div class="button-wrapper">
+        <button type="button" class="write">수정완료</button>
+        <button type="button" class="cancel" onclick="javascript:location.href='/board/blist/'">취소</button>
+      </div>
+    </form>
+
+  </section>
+
+</body>
+</html>
