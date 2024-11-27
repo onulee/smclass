@@ -5,6 +5,10 @@ from datetime import datetime
 from django.db.models import Q
 from django.db.models import F
 from django.core.paginator import Paginator
+from django.conf import settings
+from django.conf.urls.static import static
+import os
+
 
 
 # 게시판리스트
@@ -72,6 +76,14 @@ def bupdate(request,bno):
 
 # 글삭제
 def bdelete(request,bno):
+  qs = Board.objects.get(bno=bno)
+  
+  # 파일삭제
+  media_root = settings.MEDIA_ROOT
+  remove_file = media_root+"/"+str(qs.bfile)
+  if os.path.isfile(remove_file):
+    os.remove(remove_file)
+  
   Board.objects.get(bno=bno).delete()
   context = {"dmsg":bno}
   return render(request,'blist.html',context)
