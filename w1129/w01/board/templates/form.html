@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>form</h2>
+  <form action="" method="post" name="frm" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>파일1</label>
+    <input type="file" name="bfile" class='file'><br>
+    <label>파일2</label>
+    <input type="file" name="bfile" class='file'><br>
+    <input type="submit" value="전송"><br>
+
+  </form>
+  
+</body>
+</html>

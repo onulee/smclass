@@ -1,6 +1,19 @@
 from django.shortcuts import render
 from board.models import Board
 from comment.models import Comment
+from django.http import HttpResponse 
+
+## form
+def form(request):
+  if request.method == "GET":
+    return render(request,'form.html')
+  else:
+    file1 = request.FILES.get('bfile')
+    print("file1 : ",file1)
+    file_list = request.FILES.getlist('bfile')
+    print("파일 : ",file_list)
+    return HttpResponse(file_list) 
+
 
 ## 상세보기
 def bview(request,bno):
