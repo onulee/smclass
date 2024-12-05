@@ -1,7 +1,35 @@
 from django.shortcuts import render
 from board.models import Board
+from member.models import Member
 from comment.models import Comment
 from django.http import HttpResponse 
+from django.http import JsonResponse,HttpResponse
+
+## map
+def map(request):
+  return render(request,'map.html')
+
+## 좋아요
+def likes(request):
+  id = request.session['session_id']
+  member = Member.objects.get(id=id)
+  bno = request.POST.get("bno",1)
+  board = Board.objects.get(bno=bno)
+  
+  if board.like_members.filter(pk=id).exists():
+    board.like_members.remove(member)
+    result = "remove"
+  else:
+    board.like_members.add(member)  
+    result = "add"
+  
+  print("개수 : ",board.like_members.count())
+    
+  # 데이터저장
+  context = {"result":result,"count":board.like_members.count()}
+  
+  return JsonResponse(context)
+
 
 ## form
 def form(request):

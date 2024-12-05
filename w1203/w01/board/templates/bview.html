@@ -23,18 +23,53 @@
 					<li class="last"><a href="#" id="leftNavi3">당첨자 발표</span></a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
+			<script>
+				$(function(){
+					$("#likeBtn").click(function(){
+						//alert("TEST");
+						const csrfToken = $("meta[name='csrf-token']").attr("content");
+						let bno = "{{board.bno}}";
+						//ajax
+						$.ajax({
+							headers:{"X-CSRFToken":csrfToken},
+							url:"/board/likes/",
+							type:"post",
+							data:{"bno":bno},
+							success:function(data){
+								console.log("결과 data.result : "+data.result)
 
+								if(data.result == "remove"){
+									//alert("좋아요 취소 "+data.count);
+									$("#liketxt").text("좋아요");
+									$("#likecount").text(data.count);
+								}else{
+									//alert("좋아요 추가"+data.count);
+									$("#liketxt").text("좋아요취소");
+									$("#likecount").text(data.count);
+								}
 
+							
+							},
+							error:function(){
+								alert("실패")
+							}
+						})//ajax
+					})
+				});
+			</script>
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
 					<h2><strong>진행중 이벤트</strong><span>쟈뎅샵의 특별한 혜택이 가득한 이벤트에 참여해 보세요.</span></h2>
-					
 					<div class="viewDivMt">
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>{{board.btitle}}</li>
+									<li>{{board.btitle}}
+										<button type="button" id="likeBtn"><span id="liketxt">
+											{% if result == "0" %}좋아요{% else %}좋아요취소{% endif %}
+										</span> <span id="likecount">{{count}}</span></button>
+									</li>
 								</ul>
 							</div>
 							<div class="day">
