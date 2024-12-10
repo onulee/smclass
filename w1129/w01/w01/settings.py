@@ -43,11 +43,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'w01.urls'
+# 탬플릿 경로설정 - 기본경로에서 templates폴더를 모두 사용
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +67,18 @@ WSGI_APPLICATION = 'w01.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.oracle',
+#         'NAME': 'XE',
+#         'USER': 'ora_user',
+#         'PASSWORD': '1111',
+#         'HOST': 'localhost',
+#         'PORT': '1521',
+#     }
+# }
+
 
 DATABASES = {
     'default': {

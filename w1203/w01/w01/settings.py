@@ -68,12 +68,29 @@ WSGI_APPLICATION = 'w01.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# 오라클 설정
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.oracle',
+#        'NAME': 'XE',
+#        'USER': 'ora_user',
+#        'PASSWORD': '1111',
+#        'HOST': 'localhost',
+#        'PORT': '1521',
+#    }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
+
 
 
 # Password validation

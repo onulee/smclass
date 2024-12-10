@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치 권한 요청</title>
+</head>
+<body>
+    <h1>위치 권한 요청</h1>
+    <button onclick="requestLocationPermission()">위치 권한 요청</button>
+
+    <script>
+        // 위의 JavaScript 코드 삽입
+        function requestLocationPermission() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        console.log(`위도: ${latitude}, 경도: ${longitude}`);
+                        alert(`위치 권한이 허용되었습니다! 위도: ${latitude}, 경도: ${longitude}`);
+                    },
+                    (error) => {
+                        switch (error.code) {
+                            case error.PERMISSION_DENIED:
+                                alert("위치 권한이 거부되었습니다.");
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                alert("위치 정보를 사용할 수 없습니다.");
+                                break;
+                            case error.TIMEOUT:
+                                alert("위치 요청이 시간 초과되었습니다.");
+                                break;
+                            default:
+                                alert("알 수 없는 오류가 발생했습니다.");
+                        }
+                    }
+                );
+            } else {
+                alert("이 브라우저는 위치 서비스를 지원하지 않습니다.");
+            }
+        }
+    </script>
+</body>
+</html>

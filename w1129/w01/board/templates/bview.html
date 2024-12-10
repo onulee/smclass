@@ -138,11 +138,12 @@ $(function() {
 	<!-- container -->
 	<div id="container">
 
+		
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
-				<li><a href="#">EVENT</a></li>
-				<li class="last">진행중 이벤트</li>
+				<li><a href="#">CUSTOMER</a></li>
+				<li class="last">NOTICE</li>
 			</ol>
 		</div>
 		
@@ -205,7 +206,7 @@ $(function() {
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
-					<h2><strong>진행중 이벤트</strong><span>쟈뎅샵의 특별한 혜택이 가득한 이벤트에 참여해 보세요.</span></h2>
+					<h2><strong>NOTICE</strong><span>쟈뎅샵 소식을 전해드립니다.</span></h2>
 					
 					<div class="viewDivMt">
 						<div class="viewHead">
@@ -224,6 +225,8 @@ $(function() {
 						</div>
 
 						<div class="viewContents">
+							{{board.bcontent}}
+							<br>
 							<img src="/static/images/img/sample_event_view.jpg" alt="" />
 						</div>
 					</div>
@@ -432,6 +435,20 @@ $(function() {
 						});//jquery
 					</script>
 
+
+					<!-- Btn Area -->
+					<div class="btnArea">
+						<div class="bRight">
+							<ul>
+								<li><a href="/board/breply/{{board.bno}}" class="nbtnbig mw">답글</a></li>
+								<li><a class="nbtnbig mw">삭제</a></li>
+								<li><a href="/board/bupdate/{{board.bno}}" class="nbtnbig mw">수정</a></li>
+								<li><a href="/board/blist/" class="sbtnMini mw">목록</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Btn Area -->
+
 					<!-- 댓글-->
 					<div class="replyWrite">
 						<ul>
@@ -494,15 +511,7 @@ $(function() {
 					<!-- //댓글 -->
 
 
-					<!-- Btn Area -->
-					<div class="btnArea">
-						<div class="bRight">
-							<ul>
-								<li><a href="#" class="sbtnMini mw">목록</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- //Btn Area -->
+					
 					
 				</div>
 			</div>

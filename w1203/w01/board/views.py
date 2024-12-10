@@ -3,6 +3,15 @@ from board.models import Board
 from member.models import Member
 from comment.models import Comment
 from django.http import JsonResponse,HttpResponse
+from django.db.models import Q,F
+from django.db.models import Count
+
+## 로케이션 확인
+def location(request):
+  return render(request,'location.html')
+
+
+
 ## 게시글저장
 ## 1,aaa 2,aaa 3,bbb 4,aaa
 
@@ -66,6 +75,13 @@ def bview(request,bno):
 
 ## 게시판리스트
 def blist(request):
-  qs = Board.objects.all().order_by("-bgroup","bstep")
+  # qs = Board.objects.all().order_by("-bgroup","bstep")
+  # c_qs = Comment.objects.filter(Q(board__in=qs)).values('board').annotate(count=Count('board')).order_by("-board")
+  
+  qs = Board.objects.annotate(comment_count=Count('comment')).order_by('-bgroup', 'bstep', '-comment_count')
+  print("result : ",qs[0].comment_count)
+  print("c_qs : ",qs)
+  ## html 에서  {{board.comment_count }}
+  
   context = {"blist":qs}
   return render(request,'blist.html',context)
