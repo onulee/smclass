@@ -9,6 +9,7 @@ urlpatterns = [
     path('member/', include('member.urls')),
     path('board/', include('board.urls')),
     path('comment/', include('comment.urls')),
+    path('payment/', include('payment.urls')),
 ]
 
 # 파일업로드 : media연결

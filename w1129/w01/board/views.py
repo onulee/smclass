@@ -7,6 +7,7 @@ from django.http import JsonResponse,HttpResponse
 from django.db.models import F,Q
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.db.models import QuerySet
 
 ## 카카오 지도 api 불러오기
 def map(request):
@@ -140,6 +141,7 @@ def bwrite(request):
     member = Member.objects.get(id=id)
     btitle = request.POST.get("btitle")
     bcontent = request.POST.get("bcontent")
+    print("bcontent : ",bcontent)
     bfile = request.FILES.get("bfile","")
     #qs = Board(member=member,btitle=btitle,bcontent=bcontent,bfile=bfile)
     #qs.bgroup = qs.bno
@@ -156,7 +158,7 @@ def bwrite(request):
 def blist(request):
   # order_by : 정렬, -:역순정렬
   qs = Board.objects.all().order_by("-bgroup","bstep")
-  
+  print(qs.query)  # SQL 쿼리 출력
   qs = Board.objects.annotate(comment_count=Count('comment')).order_by('-bgroup', 'bstep', '-comment_count')
   
   paginator = Paginator(qs,10)           # 100개 -> 10개씩 분리작업

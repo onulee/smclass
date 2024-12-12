@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<!-- container -->
+{% block container-block %}
+	<div id="container">
+		
+		<div id="location">
+			<ol>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">CUSTOMER</a></li>
+				<li class="last">NOTICE</li>
+			</ol>
+		</div>
+		
+		<div id="outbox">		
+			<div id="left">
+				<div id="title2">CUSTOMER<span>고객센터</span></div>
+				<ul>	
+					<li><a href="#" id="leftNavi1">NOTICE</a></li>
+					<li><a href="#" id="leftNavi2">1:1문의</a></li>
+					<li><a href="#" id="leftNavi3">FAQ</span></a></li>
+					<li class="last"><a href="#" id="leftNavi4">이용안내</a></li>
+				</ul>			
+			</div><script type="text/javascript">initSubmenu(1,0);</script>
+			<script>
+				if("{{dmsg}}" != ''){
+					alert("{{dmsg}}번 게시글이 삭제되었습니다.")
+					location.href="/board/blist/"
+				}
+			</script>
+			
+			<!-- contents -->
+			<div id="contents">
+				<div id="customer">
+					<h2><strong>NOTICE</strong><span>쟈뎅샵 소식을 전해드립니다.</span></h2>
+					
+					<div class="orderDivMt">
+						<table summary="NO, 제목, 등록일, 조회수 순으로 공지사항을 조회 하실수 있습니다." class="orderTable2" border="1" cellspacing="0">
+							<caption>공지사항 보기</caption>
+							<colgroup>
+								<col width="10%" class="tnone" />
+								<col width="*" />
+								<col width="14%" class="tw25" />
+								<col width="14%" class="tnone" />
+							</colgroup>
+							<thead>
+								<th scope="col" class="tnone">NO.</th>
+								<th scope="col">제목</th>
+								<th scope="col">등록일</th>
+								<th scope="col" class="tnone">조회수</th>
+							</thead>
+							<tbody>
+								{% for board in blist %}
+								<tr>
+									<td class="tnone">{{board.bno}}</td>
+									<td class="left">
+										<a href="/board/bview/{{board.bno}}?page={{nowpage}}">
+											{% if board.bindent > 0 %}
+											{% for i in ""|ljust:board.bindent %}└{% endfor %}
+											{% endif %}
+											{{board.btitle}}
+										</a>
+										<!--
+											<img src="/static/images/ico/ico_new.gif" alt="NEW" />
+											-->
+										</td>
+									<td>{{board.bdate|date:'Y-m-d'}}</td>
+									<td class="tnone right">{{board.bhit}} </td>
+								</tr>
+								{% endfor %}
+								
+							</tbody>
+						</table>
+					</div>
+					<br><br>
+					<div class="btnAreaList">
+						<div class="bwright">
+							<ul>
+								<li><a href="/board/bwrite/" class="sbtnMini">글쓰기</a></li>
+							</ul>
+						</div>
+						<br>
+						<div class="btnAreaList">
+							<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+							{% if blist.has_previous %}
+							<a href="/board/blist/?page=1" class="n"><img src="/static/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+							<a href="/board/blist/?page={{blist.previous_page_number}}" class="pre"><img src="/static/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+							{% else %}
+							<a class="n"><img src="/static/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+							<a class="pre"><img src="/static/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+							{% endif %}
+							{% for page in blist.paginator.page_range %}
+							{% if page == nowpage %}
+								<strong>{{page}}</strong>
+								{% else %}
+								<a href="/board/blist/?page={{page}}">{{page}}</a>
+							{% endif %}
+							{% endfor %}
+							{% if blist.has_next %}
+							<a href="/board/blist/?page={{blist.next_page_number}}" class="next"><img src="/static/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+							<a href="/board/blist/?page={{blist.paginator.num_pages}}" class="n"><img src="/static/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+							{% else %}
+							<a class="next"><img src="/static/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+							<a class="n"><img src="/static/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+							{% endif %}
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
+					
+					<div class="searchWrap">
+						<div class="search">
+							<ul>
+								<li class="web"><img src="/static/images/txt/txt_search.gif" alt="search" /></li>
+								<li class="se">
+									<select>
+										<option value="" />제목</option>
+									</select>
+								</li>
+								<li><input type="text" class="searchInput" /></li>
+								<li class="web"><a href="#"><img src="/static/images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li class="mobile"><a href="#"><img src="/static/images/btn/btn_search_m.gif" alt="검색" /></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //포토 구매후기 -->
+					
+
+				</div>
+			</div>
+			<!-- //contents -->
+			
+		</div>
+	</div>
+	<!-- //container -->
+	{% endblock container-block %}
+	

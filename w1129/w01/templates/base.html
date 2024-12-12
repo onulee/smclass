@@ -9,6 +9,7 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
+
 <link rel="stylesheet" type="text/css" href="{% static '/css/reset.css'%}" />
 <link rel="stylesheet" type="text/css" href="{% static '/css/layout.css'%}" />
 <link rel="stylesheet" type="text/css" href="{% static '/css/content.css'%}" />
@@ -33,29 +34,47 @@
 <style>a{cursor: pointer;}</style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#summernote').summernote({height: 400,  focus:true,  width:"100%",
+		$('#summernote').summernote({
+			  height: 300,  focus:true,  width:"100%",
+				minHeight: 200,           // 에디터 최소 높이
+		    maxHeight: 400,          // 에디터 최대 높이
         lang : 'ko-KR',
-				
+				placeholder: '글자를 입력하시면 됩니다.' ,
+		      //  추가 부분
+        toolbar: [
+			    // [groupName, [list of button]]
+			    ['fontname', ['fontname']],
+			    ['fontsize', ['fontsize']],
+			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+			    ['color', ['forecolor','color']],
+			    ['table', ['table']],
+			    ['para', ['ul', 'ol', 'paragraph']],
+			    ['height', ['height']],
+			    ['insert',['picture','link','video']],
+			    ['view', ['fullscreen', 'help']]
+			  ],
+			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 
-
-        //이미지 업로드 시 width 적용
-        callbacks: {
-            onImageUpload: function(image) {
-                console.log('in');
-                const file = image[0];
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    const image = $('<img>').attr('src',  reader.result);
-                    image.attr('width','100%');
-                    $('#summernote').summernote("insertNode", image[0]);
-                }
-                reader.readAsDataURL(file);
-            }
-        }
+			//이미지 업로드 시 width 적용
+			callbacks: {
+					onImageUpload: function(image) {
+							console.log('in');
+							const file = image[0];
+							const reader = new FileReader();
+							reader.onloadend = function() {
+									const image = $('<img>').attr('src',  reader.result);
+									image.attr('width','100%');
+									$('#summernote').summernote("insertNode", image[0]);
+							}
+							reader.readAsDataURL(file);
+					}
+			}
     });
 
-    const markupStr = '{{form.content.value|safe|addslashes|default_if_none:''}}'
-    $('#summernote').summernote('code', markupStr);
+		// form.py사용시
+    //const markupStr = '{{form.content.value|safe|addslashes|default_if_none:''}}'
+    //$('#summernote').summernote('code', markupStr);
 		
 		//로그아웃
 		/*

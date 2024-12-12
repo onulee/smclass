@@ -5,6 +5,18 @@
 	<!-- container -->
 
 	<script type="text/javascript">
+
+		var checkUnload = true;
+    $(window).on('beforeunload', function () {
+        if (checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
+    });
+    $("#.sbtnMini").on("click", function () {
+        checkUnload = false;
+        writeFrm.submit();
+    });
+
+
+
 		if ("{{wmsg}}"=="1"){
       alert("글쓰기가 저장되었습니다.")
       location.href="/board/blist/";

@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+{% load static %}
+
+	{% block container-block%}
+	<!-- container -->
+	<div id="container">
+
+		<div id="location">
+			<ol>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">CUSTOMER</a></li>
+				<li class="last">NOTICE</li>
+			</ol>
+		</div>
+		
+		<div id="outbox">		
+			<div id="left">
+				<div id="title2">CUSTOMER<span>고객센터</span></div>
+				<ul>	
+					<li><a href="#" id="leftNavi1">NOTICE</a></li>
+					<li><a href="#" id="leftNavi2">1:1문의</a></li>
+					<li><a href="#" id="leftNavi3">FAQ</span></a></li>
+					<li class="last"><a href="#" id="leftNavi4">이용안내</a></li>
+				</ul>			
+			</div><script type="text/javascript">initSubmenu(1,0);</script>
+			<script>
+				$(function(){
+					const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+					// 게시글 삭제
+					$("#delBtn").click(function(){
+						if(confirm("{{board.bno}}번 데이터를 삭제하시겠습니까?")){
+							location.href="/board/bdelete/{{board.bno}}/"
+						}
+					})
+
+					//좋아요 기능
+					$(document).on("click","#likeBtn",function(){
+						//alert('test')
+						var bno = "{{board.bno}}"
+
+						//ajax구문
+						$.ajax({
+							headers : { "X-CSRFToken": csrfToken },
+							url:"/board/like/",
+							type:"post",
+							data:{"bno":bno},
+							success:function(data){
+								// 좋아요 상태
+								if (data.result == "1"){
+									alert("좋아요")
+									$("#liketxt").text("좋아요취소")
+								}else{
+									alert("좋아요취소")
+									$("#liketxt").text("좋아요")
+								}
+								$("#likecnt").text(data.count)
+							},
+							error:function(){
+								alert("실패")
+								}
+						}) //ajax
+					})//likeBtn
+
+
+				})//jquery
+			</script>
+
+			<!-- contents -->
+			<div id="contents">
+				<div id="customer">
+					<h2><strong>NOTICE</strong><span>자뎅샵 소식을 전해드립니다.</span></h2>
+
+					<div class="viewDivMt">
+						<div class="viewHead">
+							<div class="subject">
+								<ul>
+									<li>
+										{{board.btitle}} 
+										<button type="button" id='likeBtn' data-bno="{{board.bno}}">
+											<span id="liketxt">좋아요</span> <span id="likecnt">{{board.like_members.all.count}}</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+							<div class="day">
+								<p class="txt">작성일<span>{{board.bdate|date:'Y-m-d'}}</span></p>
+							</div>
+						</div>
+
+						<div class="viewContents">
+							{{board.bcontent|striptags }}
+						</div>
+					</div>
+
+
+					<!-- 이전다음글 -->
+					<div class="pnDiv web">
+						<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1" cellspacing="0">
+							<caption>이전다음글</caption>
+							<colgroup>
+							<col width="100px" />
+							<col width="*" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="pre">PREV</th>
+									<td><a href="/board/bview/{{prev_board.bno}}/?page={{nowpage}}">{{prev_board.btitle}}</a></td>
+								</tr>
+
+								<tr>
+									<th class="next">NEXT</th>
+									<td><a href ="/board/bview/{{next_board.bno}}/?page={{nowpage}}">{{next_board.btitle}}</td></a>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- //이전다음글 -->
+
+
+					<!-- Btn Area -->
+					<div class="btnArea btline">
+						<div class="bRight">
+							<ul>
+								<li><a href="/board/breply/{{board.bno}}/?page={{nowpage}}" class="nbtnbig">답글</a></li>
+								<li><a id ="delBtn" class="nbtnbig">삭제</a></li>
+								<li><a href="/board/bupdate/{{board.bno}}/?page={{nowpage}}" class="nbtnbig">수정</a></li>
+								<li><a href="/board/blist/?page={{nowpage}}" class="sbtnMini mw">목록</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Btn Area -->
+<script>
+			$(function(){
+				const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+				// 1. 댓글등록
+				$("#replyBtn").click(function(){
+					bno = "{{board.bno}}";
+					cpw=$(".replynum").val();
+					ccontent = $(".replyType").val();
+					if(ccontent.length <2){
+						alert("두글자 이상 입력하셔야 입력이 가능합니다.");
+						$(".replyType").focus()
+						return false;
+					}
+					//ajax구문
+					$.ajax({
+						headers : { "X-CSRFToken": csrfToken },
+						url:"/comment/cwrite/",
+						type:"post",
+						data:{"ccontent":ccontent,"cpw":cpw,"bno":bno},
+						success:function(data){
+							alert("댓글이 추가되었습니다.")
+							// 하단댓글에 나타나기
+							var hdata = ``;
+							hdata += `<ul id="${data.comment[0].cno}">`;
+							hdata += `<li class="name">${data.comment[0].member_id} <span>[ ${data.comment[0].cdate} ]</span></li>`;
+							hdata += `<li class="txt">${data.comment[0].ccontent}</li>`;
+							hdata += `<li class="btn">`;
+							hdata += `<a class="rebtn updateBtn">수정</a>&nbsp`;
+							hdata += `<a class="rebtn deleteBtn">삭제</a>`;
+							hdata += `</li>`;
+							hdata += `</ul>`;
+							$(".replyBox").prepend(hdata);
+
+							// 입력창 글자 지우기
+							$(".replynum").val("");
+							$(".replyType").val("");
+						},
+						error:function(){
+							alert("실패")
+							}
+					}) //ajax
+				}) // btn 댓글등록
+
+				//2. 댓글삭제 - 동적이벤트
+				$(document).on("click",".deleteBtn",function(){
+					//alert("test")
+					let cno =	$(this).closest("ul").attr("id")
+					if(confirm(cno+"번 댓글을 삭제하시겠습니까?")){
+						//ajax구문
+						$.ajax({
+							headers : { "X-CSRFToken": csrfToken },
+							url:"/comment/cdelete/",
+							type:"post",
+							data:{"cno":cno},
+							success:function(data){
+								alert("댓글이 삭제되었습니다.")
+							},
+							error:function(){
+								alert("실패")
+								}
+						}) //ajax
+	
+						$("#"+cno).remove()
+					}
+
+				}); //deleteBtn
+
+				//3. 댓글수정화면
+				$(document).on("click",".updateBtn",function(){
+					//alert("test")
+					let cno = $(this).closest("ul").attr("id")
+					let id = "{{request.session.session_id}}"
+					let cdate = $(this).closest("ul").children(".name").children("span").text()
+					let ccontent = $(this).closest("ul").children(".txt").text()
+					console.log("cno : "+cno)
+					
+					var hdata = ``;
+					hdata += `<li class="name">${id}<span> ${cdate} </span></li>`;
+					hdata += `<li class="txt"><textarea class="replyType">${ccontent}</textarea></li>`;
+					hdata += `<li class="btn">`;
+					hdata += `<a class="rebtn saveBtn">저장</a>&nbsp`;
+					hdata += `<a class="rebtn cancelBtn">취소</a>`;
+					hdata += `</li>`;
+					$("#"+cno).html(hdata);
+				}); //updateBtn
+
+				//4. 댓글취소
+				$(document).on("click",".cancelBtn",function(){
+					//alert("취소")
+					let cno = $(this).closest("ul").attr("id")
+					let id = "{{request.session.session_id}}"
+					let cdate = $(this).closest("ul").children(".name").children("span").text()
+					let ccontent = $(this).closest("ul").children(".txt").text()
+
+					var hdata = ``;
+					hdata += `<li class="name">${id} <span> ${cdate} </span></li>`;
+					hdata += `<li class="txt">${ccontent}</li>`;
+					hdata += `<li class="btn">`;
+					hdata += `<a class="rebtn updateBtn">수정</a>&nbsp`;
+					hdata += `<a class="rebtn deleteBtn">삭제</a>`;
+					hdata += `</li>`;
+					$("#"+cno).html(hdata);
+				});//cancelBtn
+
+				//5. 댓글수정저장
+				$(document).on("click",".saveBtn",function(){
+					alert("댓글수정저장")
+					let cno = $(this).closest("ul").attr("id")
+					let id = "{{request.session.session_id}}"
+					let cdate = $(this).closest("ul").children(".name").children("span").text()
+					let ccontent = $(this).closest("ul").children(".txt").children(".replyType").val()
+					alert(ccontent)
+
+					//ajax구문
+					$.ajax({
+						headers : { "X-CSRFToken": csrfToken },
+						url:"/comment/csave/",
+						type:"post",
+						data:{"ccontent":ccontent,"cno":cno},
+						success:function(data){
+							alert("댓글이 수정되었습니다.")
+							// 하단댓글에 나타나기
+							var hdata = ``;
+							hdata += `<li class="name">${id} <span> ${data.comment[0].cdate} </span></li>`;
+							hdata += `<li class="txt">${data.comment[0].ccontent}</li>`;
+							hdata += `<li class="btn">`;
+							hdata += `<a class="rebtn updateBtn">수정</a>&nbsp`;
+							hdata += `<a class="rebtn deleteBtn">삭제</a>`;
+							hdata += `</li>`;
+							$("#"+cno).html(hdata);
+						},
+						error:function(){
+							alert("실패")
+							}
+					}) //ajax
+
+
+
+				});//saveBtn
+
+
+
+
+
+				//정적이벤트
+				//$(".deleteBtn").click(function(){});
+
+			}); //jquery
+</script>
+
+
+
+					<!-- 댓글-->
+					<div class="replyWrite">
+						<ul>
+							<li class="in">
+								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
+								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
+								<textarea class="replyType"></textarea>
+							</li>
+							<li class="btn" id="replyBtn" ><a class="replyBtn">등록</a></li>
+						</ul>
+						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
+					</div>
+
+					<div class="replyBox">
+						
+						{% if clist %}
+						{% for c in clist %}
+						<ul id="{{c.cno}}">
+							<li class="name">{{c.member.id}} <span>[ {{c.cdate|date:'Y-m-d H:m:i'}} ]</span></li>
+							<li class="txt">{{c.ccontent}}</li>
+							<li class="btn">
+								<a class="rebtn updateBtn">수정</a>
+								<a class="rebtn deleteBtn">삭제</a>
+							</li>
+						</ul>
+						{% endfor %}
+						{% endif%}
+						
+					</div>
+					<!--댓글수정화면,비밀글
+						<ul>
+							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
+							<li class="txt"><textarea class="replyType"></textarea></li>
+							<li class="btn">
+								<a href="#" class="rebtn">저장</a>
+								<a href="#" class="rebtn">취소</a>
+							</li>
+						</ul>
+						<ul>
+							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
+							<li class="txt">
+								<a href="password.html" class="passwordBtn"><span class="orange">※ 비밀글입니다.</span></a>
+							</li>
+						</ul>
+						-->
+					
+					<!-- //댓글 -->
+					
+					
+
+
+				</div>
+			</div>
+			<!-- //contents -->
+
+
+		</div>
+	</div>
+	<!-- //container -->
+
+
+
+	{% endblock container-block%}
