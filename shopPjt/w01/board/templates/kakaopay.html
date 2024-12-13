@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
   <script src="http://code.jquery.com/jquery-latest.min.js" ></script>
   <title>카카오 페이</title>
   <script>
     $(function(){
       $("#kpay").click(function(){
         alert("카카오페이 연결")
-        location.href="/board/prepare_payment/"
+        // 아래 데이터 외에도 필요한 데이터를 원하는 대로 담고, Controller에서 @RequestBody로 받으면 됨
+        let fdata = {
+          name: '상품명',    // 카카오페이에 보낼 대표 상품명
+          totalPrice: 20000 // 총 결제금액
+        };
+    
+      $.ajax({
+          type: 'POST',
+          headers : { "X-CSRFToken": $('meta[name="csrf-token"]').attr('content') },
+          url: '/payment/prepare_payment/',
+          data: fdata,
+          success: function(data) {
+              location.href = response.next_redirect_pc_url;
+          }
+      });
       })
     })
 

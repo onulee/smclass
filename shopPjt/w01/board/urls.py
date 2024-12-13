@@ -3,8 +3,7 @@ from . import views
 
 app_name= 'board'
 urlpatterns = [
-    path('kakaopay/', views.kakaopay, name="kakaopay"),
-    path('prepare_payment/', views.prepare_payment, name="prepare_payment"),
+    
     path('like/', views.like, name="like"),
     path('blist/', views.blist, name="blist"), #blist 함수연결
     path('bwrite/', views.bwrite, name="bwrite"), #bwrite 함수연결

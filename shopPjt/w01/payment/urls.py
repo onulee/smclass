@@ -3,9 +3,11 @@ from . import views
 
 app_name= 'payment'
 urlpatterns = [
-    path('approval/', views.approval, name="approval"), 
-    path('cancel/', views.cancel, name="cancel"), 
-    path('fail/', views.fail, name="fail"), 
+    path('kakaopay/', views.kakaopay, name="kakaopay"),
+    path('prepare_payment/', views.prepare_payment, name="prepare_payment"),
+    path('paySuccess/', views.paySuccess, name='paySuccess'),
+    path('payFail/', views.payFail, name="payFail"), 
+    path('payCancel/', views.payCancel, name="payCancel"), 
     
 ]
 

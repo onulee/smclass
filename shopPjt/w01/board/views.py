@@ -9,46 +9,6 @@ import requests
 from django.conf import settings
 
 
-# 2. 카카오페이 결제 준비 API 호출
-def prepare_payment(request):
-  KAKAO_PAY_KEY='3d520f84162912f2e93a00ba52dd1367'
-  KAKAO_PAY_CID='TC0ONETIME'
-  KAKAOPAY_BASE_URL = 'https://kapi.kakao.com/v1/payment/ready'
-  url = KAKAOPAY_BASE_URL
-    
-  headers = {
-      "Authorization": f"KakaoAK {KAKAO_PAY_KEY}",
-      "Content-Type": "application/json",
-  }
-  data = {
-      "cid": "TC0ONETIME",  # 테스트용 CID
-      "partner_order_id": "1234567890",
-      "partner_user_id": "test_user",
-      "item_name": "초코파이",
-      "quantity": 1,
-      "total_amount": 1000,
-      "vat_amount": 100,
-      "tax_free_amount": 0,
-      "approval_url": "http://127.0.0.1/payment/approval",
-      "cancel_url": "http://127.0.0.1/payment/cancel",
-      "fail_url": "http://127.0.0.1/payment/fail",
-  }
-  response = requests.post(url, headers=headers, data=data)
-  result = response.json()
-  
-  print("결과 : ",result)
-
-  if response.status_code == 200:
-      return JsonResponse({"next_redirect_pc_url": result["next_redirect_pc_url"]})
-  else:
-      return JsonResponse({"error": result}, status=400)
-  
-
-
-# 1. 카카오페이 연결을 위한 페이지
-def kakaopay(request):
-  return render(request,"kakaopay.html")
-
 
 # 좋아요
 def like(request):

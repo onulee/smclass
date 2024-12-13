@@ -10,6 +10,7 @@ urlpatterns = [
     path('member/',include('member.urls')), #member 연결
     path('board/',include('board.urls')), 
     path('comment/',include('comment.urls')), 
+    path('payment/', include('payment.urls')),
 ]
 # media연결
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
