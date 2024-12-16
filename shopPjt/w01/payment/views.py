@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from board.models import Board
 from member.models import Member
 from comment.models import Comment
@@ -38,17 +38,20 @@ def prepare_payment(request):
       "cancel_url": "http://127.0.0.1:8000/payment/payFail",
       "fail_url": "http://127.0.0.1:8000/payment/payCancel",
   }
-  print("data : ",data)
   print("KAKAOPAY_BASE_URL : ",KAKAOPAY_BASE_URL)
-  response = requests.post(KAKAOPAY_BASE_URL, headers=headers, data=data)
+  print("data : ",data)
+  print("전송 데이터:", json.dumps(data, ensure_ascii=False))
+  response = requests.post(KAKAOPAY_BASE_URL, headers=headers, data=json.dumps(data, ensure_ascii=False))
   result = response.json()
   print("결과 : ",result)
   
-  
+  # 결과 넘어옴.
   request.session["tid"] = result["tid"]
 
   if response.status_code == 200:
-      return JsonResponse({"next_redirect_pc_url": result["next_redirect_pc_url"]})
+      print("다음 결과 url : ",result["next_redirect_pc_url"])
+    #   return JsonResponse({"next_redirect_pc_url": result["next_redirect_pc_url"]})
+      return redirect(response.json()["next_redirect_pc_url"])
   else:
       return JsonResponse({"error": result}, status=400)
 
